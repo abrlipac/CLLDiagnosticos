@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Clientes.Domain">
+    <Position X="3.01" Y="1.115" Height="0.291" Width="1.169" />
+  </Comment>
+  <Class Name="Clientes.Domain.Paciente">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAACAAAAAEgEAAAAAAAAAAAAAgAAAAAAgAAAA=</HashCode>
+      <FileName>Paciente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

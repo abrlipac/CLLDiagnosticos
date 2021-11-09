@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph DataVirtualized="True" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1)" Category="CodeSchema_Assembly" Bounds="347.923333333333,960,255.146666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="SistemaDiagnostico.Presentacion.exe" />
+    <Node Id="(@10)" Category="CodeSchema_Assembly" Bounds="365.606666666667,120,137.526666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Clientes.Api.dll" />
+    <Node Id="(@11)" Category="CodeSchema_Assembly" Bounds="613.133333333333,290,163.826666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Diagnosticos.Api.dll" />
+    <Node Id="(@12)" Category="CodeSchema_Assembly" Bounds="364.033333333333,580,135.953333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Identity.Api.dll" />
+    <Node Id="(@13)" Category="CodeSchema_Assembly" Bounds="628.686666666667,750,164.316666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Personal.Domain.dll" />
+    <Node Id="(@14)" Category="CodeSchema_Assembly" Bounds="60,290,161.41,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Clientes.Domain.dll" />
+    <Node Id="(@15)" Category="CodeSchema_Assembly" Bounds="846.96,290,187.71,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Diagnosticos.Domain.dll" />
+    <Node Id="(@16)" Category="CodeSchema_Assembly" Bounds="60,750,159.836666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Identity.Domain.dll" />
+    <Node Id="(@17)" Category="CodeSchema_Assembly" Bounds="1186.33333333333,650,224.91,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Services.Common.Collection.dll" />
+    <Node Id="(@18)" Category="CodeSchema_Assembly" Bounds="291.41,290,168.78,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Clientes.Common.dll" />
+    <Node Id="(@19)" Category="CodeSchema_Assembly" Bounds="347.923333333333,905,227.023333333334,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="SistemaDiagnostico.Negocio.dll" />
+    <Node Id="(@2)" Category="CodeSchema_Assembly" Bounds="863.003333333333,750,233.33,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Personal.Persistence.Database.dll" />
+    <Node Id="(@20)" Category="CodeSchema_Assembly" Bounds="628.686666666667,580,203.193333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Personal.Service.Queries.dll" />
+    <Node Id="(@21)" Category="CodeSchema_Assembly" Bounds="60,120,200.286666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Clientes.Service.Queries.dll" />
+    <Node Id="(@22)" Category="CodeSchema_Assembly" Bounds="878.52,120,226.586666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Diagnosticos.Service.Queries.dll" />
+    <Node Id="(@23)" Category="CodeSchema_Assembly" Bounds="60,580,198.713333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Identity.Service.Queries.dll" />
+    <Node Id="(@24)" Category="CodeSchema_Assembly" Bounds="20,1020,181.356666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Api.Gateway.Proxies.dll" />
+    <Node Id="(@25)" Category="CodeSchema_Assembly" Bounds="20,1075,182.8,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Api.Gateway.Models.dll" />
+    <Node Id="(@26)" Category="CodeSchema_Assembly" Bounds="628.686666666667,635,238.513333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Personal.Service.EventHandlers.dll" />
+    <Node Id="(@27)" Category="CodeSchema_Assembly" Bounds="60,175,235.606666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Clientes.Service.EventHandlers.dll" />
+    <Node Id="(@28)" Category="CodeSchema_Assembly" Bounds="878.52,175,261.906666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Diagnosticos.Service.EventHandlers.dll" />
+    <Node Id="(@29)" Category="CodeSchema_Assembly" Bounds="60,635,234.033333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Identity.Service.EventHandlers.dll" />
+    <Node Id="(@3)" Category="CodeSchema_Assembly" Bounds="60,405,230.423333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Clientes.Persistence.Database.dll" />
+    <Node Id="(@30)" Category="CodeSchema_Assembly" Bounds="613.133333333333,175,195.386666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Diagnosticos.Bdd.Tests.dll" />
+    <Node Id="(@31)" Category="CodeSchema_Assembly" Bounds="613.133333333333,120,171.773333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Diagnosticos.Tests.dll" />
+    <Node Id="(@32)" Category="CodeSchema_Assembly" Bounds="40,945,217.923333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Api.Gateway.DesktopClient.dll" />
+    <Node Id="(@4)" Category="CodeSchema_Assembly" Bounds="613.133333333333,405,256.723333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Diagnosticos.Persistence.Database.dll" />
+    <Node Id="(@5)" Category="CodeSchema_Assembly" Bounds="289.836666666667,750,228.85,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Identity.Persistence.Database.dll" />
+    <Node Id="(@6)" Category="CodeSchema_Assembly" Bounds="1186.33333333333,540,208.27,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Services.Common.Paging.dll" />
+    <Node Id="(@7)" Category="CodeSchema_Assembly" Bounds="673.07,905,170.61,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Common.Logging.dll" />
+    <Node Id="(@8)" Category="CodeSchema_Assembly" Bounds="1186.33333333333,595,219.776666666667,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Services.Common.Mapping.dll" />
+    <Node Id="(@9)" Category="CodeSchema_Assembly" Bounds="937.2,580,140.433333333333,25" DelayedChildNodesState="NotFetched" Group="Collapsed" Label="Personal.Api.dll" />
+    <Node Id="APIs{17D71BAA-AF80-477D-9659-C1CBD1A9BBED}" Category="CodeMap_SolutionFolder" Bounds="20,905,257.923333333333,85" Group="Expanded" Label="APIs" />
+    <Node Id="API{37954F73-DD79-4CC2-95BA-6A487F25C407}" Category="CodeMap_SolutionFolder" Bounds="593.133333333333,250,203.826666666667,85" Group="Expanded" Label="API" />
+    <Node Id="API{59F4C078-34EA-4441-B3FB-6B263CF69587}" Category="CodeMap_SolutionFolder" Bounds="344.033333333333,540,175.953333333333,85" Group="Expanded" Label="API" />
+    <Node Id="API{7929ACD6-9490-4EEE-80BB-727A14B198B1}" Category="CodeMap_SolutionFolder" Bounds="345.606666666667,80,177.526666666667,85" Group="Expanded" Label="API" />
+    <Node Id="API{C44A4A2B-65BB-4D4C-84B8-3019A156D6DB}" Category="CodeMap_SolutionFolder" Bounds="917.2,540,180.433333333333,85" Group="Expanded" Label="API" />
+    <Node Id="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" Category="CodeMap_SolutionFolder" Bounds="20,40,523.133333333333,430" Group="Expanded" Label="Clientes" />
+    <Node Id="Clients{76CF3A4B-1947-45BB-B92B-33190C8F5A4F}" Category="CodeMap_SolutionFolder" Bounds="327.923333333333,865,295.146666666667,140" Group="Expanded" Label="Clients" />
+    <Node Id="Common{4DEDD913-7034-4BC0-81A9-7E3FBD527CEB}" Category="CodeMap_SolutionFolder" Bounds="653.07,865,210.61,85" Group="Expanded" Label="Common" />
+    <Node Id="Common{7C292177-9174-4F20-992D-BD397B301979}" Category="CodeMap_SolutionFolder" Bounds="1166.33333333333,500,264.91,195" Group="Expanded" Label="Common" />
+    <Node Id="Common{F22AC1C1-B79E-4B18-B320-CE8ADEA9C674}" Category="CodeMap_SolutionFolder" Bounds="271.41,250,208.78,85" Group="Expanded" Label="Common" />
+    <Node Id="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" Category="CodeMap_SolutionFolder" Bounds="573.133333333333,40,607.293333333333,430" Group="Expanded" Label="Diagnosticos" />
+    <Node Id="Gateways{7D5CEA8D-E2B7-4776-B859-44AB301A5D90}" Category="CodeMap_SolutionFolder" Bounds="0,865,297.923333333333,255" Group="Expanded" Label="Gateways" />
+    <Node Id="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" Category="CodeMap_SolutionFolder" Bounds="20,500,538.686666666667,315" Group="Expanded" Label="Identity" />
+    <Node Id="Models{49AE3AF4-3DE4-47EB-B16B-3CEAC792F2B9}" Category="CodeMap_SolutionFolder" Bounds="40,250,201.41,85" Group="Expanded" Label="Models" />
+    <Node Id="Models{6D5287A9-A58B-4C14-829F-BD914B7FDDA1}" Category="CodeMap_SolutionFolder" Bounds="40,710,199.836666666667,85" Group="Expanded" Label="Models" />
+    <Node Id="Models{845126B9-EE4B-45EA-939F-199E2B31A97C}" Category="CodeMap_SolutionFolder" Bounds="826.96,250,227.71,85" Group="Expanded" Label="Models" />
+    <Node Id="Models{E04E08CB-5792-4EFC-9F54-3317933EA4A0}" Category="CodeMap_SolutionFolder" Bounds="608.686666666667,710,204.316666666667,85" Group="Expanded" Label="Models" />
+    <Node Id="Persistence{38963147-55F3-4921-955E-2A1B4A9A7F9C}" Category="CodeMap_SolutionFolder" Bounds="40,365,270.423333333333,85" Group="Expanded" Label="Persistence" />
+    <Node Id="Persistence{9D69D8E9-C6B4-49AB-BC93-BD69422AE693}" Category="CodeMap_SolutionFolder" Bounds="593.133333333333,365,296.723333333333,85" Group="Expanded" Label="Persistence" />
+    <Node Id="Persistence{B4374373-DA0A-4916-BBE8-9D35689790BC}" Category="CodeMap_SolutionFolder" Bounds="269.836666666667,710,268.85,85" Group="Expanded" Label="Persistence" />
+    <Node Id="Persistence{C2A3C365-47BF-4460-A0C9-BE8A691F47BC}" Category="CodeMap_SolutionFolder" Bounds="843.003333333333,710,273.33,85" Group="Expanded" Label="Persistence" />
+    <Node Id="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" Category="CodeMap_SolutionFolder" Bounds="588.686666666667,500,547.646666666667,315" Group="Expanded" Label="Personal" />
+    <Node Id="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" Category="CodeMap_SolutionFolder" Bounds="0,0,1451.24333333333,835" Group="Expanded" Label="Services" />
+    <Node Id="Services{829E1EB1-42A5-4B78-8CD9-1DE90225C4E0}" Category="CodeMap_SolutionFolder" Bounds="608.686666666667,540,278.513333333333,140" Group="Expanded" Label="Services" />
+    <Node Id="Services{864D4844-E858-4DAD-AC1D-838CF0F76B18}" Category="CodeMap_SolutionFolder" Bounds="40,540,274.033333333333,140" Group="Expanded" Label="Services" />
+    <Node Id="Services{92902B0D-94E7-4F9C-82AC-0225732F80C8}" Category="CodeMap_SolutionFolder" Bounds="40,80,275.606666666667,140" Group="Expanded" Label="Services" />
+    <Node Id="Services{A16BB7A7-EAB8-4B13-BA5C-6C0DB3A5877B}" Category="CodeMap_SolutionFolder" Bounds="858.52,80,301.906666666667,140" Group="Expanded" Label="Services" />
+    <Node Id="Testing{1EC4DBA1-D34F-4DF2-B1AF-369173F723F6}" Category="CodeMap_SolutionFolder" Bounds="593.133333333333,80,235.386666666667,140" Group="Expanded" Label="Testing" />
+  </Nodes>
+  <Links>
+    <Link Source="APIs{17D71BAA-AF80-477D-9659-C1CBD1A9BBED}" Target="(@32)" Category="Contains" FetchingParent="APIs{17D71BAA-AF80-477D-9659-C1CBD1A9BBED}" />
+    <Link Source="API{37954F73-DD79-4CC2-95BA-6A487F25C407}" Target="(@11)" Category="Contains" FetchingParent="API{37954F73-DD79-4CC2-95BA-6A487F25C407}" />
+    <Link Source="API{59F4C078-34EA-4441-B3FB-6B263CF69587}" Target="(@12)" Category="Contains" FetchingParent="API{59F4C078-34EA-4441-B3FB-6B263CF69587}" />
+    <Link Source="API{7929ACD6-9490-4EEE-80BB-727A14B198B1}" Target="(@10)" Category="Contains" FetchingParent="API{7929ACD6-9490-4EEE-80BB-727A14B198B1}" />
+    <Link Source="API{C44A4A2B-65BB-4D4C-84B8-3019A156D6DB}" Target="(@9)" Category="Contains" FetchingParent="API{C44A4A2B-65BB-4D4C-84B8-3019A156D6DB}" />
+    <Link Source="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" Target="API{7929ACD6-9490-4EEE-80BB-727A14B198B1}" Category="Contains" FetchingParent="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" />
+    <Link Source="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" Target="Common{F22AC1C1-B79E-4B18-B320-CE8ADEA9C674}" Category="Contains" FetchingParent="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" />
+    <Link Source="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" Target="Models{49AE3AF4-3DE4-47EB-B16B-3CEAC792F2B9}" Category="Contains" FetchingParent="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" />
+    <Link Source="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" Target="Persistence{38963147-55F3-4921-955E-2A1B4A9A7F9C}" Category="Contains" FetchingParent="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" />
+    <Link Source="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" Target="Services{92902B0D-94E7-4F9C-82AC-0225732F80C8}" Category="Contains" FetchingParent="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" />
+    <Link Source="Clients{76CF3A4B-1947-45BB-B92B-33190C8F5A4F}" Target="(@1)" Category="Contains" FetchingParent="Clients{76CF3A4B-1947-45BB-B92B-33190C8F5A4F}" />
+    <Link Source="Clients{76CF3A4B-1947-45BB-B92B-33190C8F5A4F}" Target="(@19)" Category="Contains" FetchingParent="Clients{76CF3A4B-1947-45BB-B92B-33190C8F5A4F}" />
+    <Link Source="Common{4DEDD913-7034-4BC0-81A9-7E3FBD527CEB}" Target="(@7)" Category="Contains" FetchingParent="Common{4DEDD913-7034-4BC0-81A9-7E3FBD527CEB}" />
+    <Link Source="Common{7C292177-9174-4F20-992D-BD397B301979}" Target="(@17)" Category="Contains" FetchingParent="Common{7C292177-9174-4F20-992D-BD397B301979}" />
+    <Link Source="Common{7C292177-9174-4F20-992D-BD397B301979}" Target="(@6)" Category="Contains" FetchingParent="Common{7C292177-9174-4F20-992D-BD397B301979}" />
+    <Link Source="Common{7C292177-9174-4F20-992D-BD397B301979}" Target="(@8)" Category="Contains" FetchingParent="Common{7C292177-9174-4F20-992D-BD397B301979}" />
+    <Link Source="Common{F22AC1C1-B79E-4B18-B320-CE8ADEA9C674}" Target="(@18)" Category="Contains" FetchingParent="Common{F22AC1C1-B79E-4B18-B320-CE8ADEA9C674}" />
+    <Link Source="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" Target="API{37954F73-DD79-4CC2-95BA-6A487F25C407}" Category="Contains" FetchingParent="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" />
+    <Link Source="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" Target="Models{845126B9-EE4B-45EA-939F-199E2B31A97C}" Category="Contains" FetchingParent="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" />
+    <Link Source="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" Target="Persistence{9D69D8E9-C6B4-49AB-BC93-BD69422AE693}" Category="Contains" FetchingParent="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" />
+    <Link Source="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" Target="Services{A16BB7A7-EAB8-4B13-BA5C-6C0DB3A5877B}" Category="Contains" FetchingParent="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" />
+    <Link Source="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" Target="Testing{1EC4DBA1-D34F-4DF2-B1AF-369173F723F6}" Category="Contains" FetchingParent="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" />
+    <Link Source="Gateways{7D5CEA8D-E2B7-4776-B859-44AB301A5D90}" Target="(@24)" Category="Contains" FetchingParent="Gateways{7D5CEA8D-E2B7-4776-B859-44AB301A5D90}" />
+    <Link Source="Gateways{7D5CEA8D-E2B7-4776-B859-44AB301A5D90}" Target="(@25)" Category="Contains" FetchingParent="Gateways{7D5CEA8D-E2B7-4776-B859-44AB301A5D90}" />
+    <Link Source="Gateways{7D5CEA8D-E2B7-4776-B859-44AB301A5D90}" Target="APIs{17D71BAA-AF80-477D-9659-C1CBD1A9BBED}" Category="Contains" FetchingParent="Gateways{7D5CEA8D-E2B7-4776-B859-44AB301A5D90}" />
+    <Link Source="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" Target="API{59F4C078-34EA-4441-B3FB-6B263CF69587}" Category="Contains" FetchingParent="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" />
+    <Link Source="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" Target="Models{6D5287A9-A58B-4C14-829F-BD914B7FDDA1}" Category="Contains" FetchingParent="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" />
+    <Link Source="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" Target="Persistence{B4374373-DA0A-4916-BBE8-9D35689790BC}" Category="Contains" FetchingParent="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" />
+    <Link Source="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" Target="Services{864D4844-E858-4DAD-AC1D-838CF0F76B18}" Category="Contains" FetchingParent="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" />
+    <Link Source="Models{49AE3AF4-3DE4-47EB-B16B-3CEAC792F2B9}" Target="(@14)" Category="Contains" FetchingParent="Models{49AE3AF4-3DE4-47EB-B16B-3CEAC792F2B9}" />
+    <Link Source="Models{6D5287A9-A58B-4C14-829F-BD914B7FDDA1}" Target="(@16)" Category="Contains" FetchingParent="Models{6D5287A9-A58B-4C14-829F-BD914B7FDDA1}" />
+    <Link Source="Models{845126B9-EE4B-45EA-939F-199E2B31A97C}" Target="(@15)" Category="Contains" FetchingParent="Models{845126B9-EE4B-45EA-939F-199E2B31A97C}" />
+    <Link Source="Models{E04E08CB-5792-4EFC-9F54-3317933EA4A0}" Target="(@13)" Category="Contains" FetchingParent="Models{E04E08CB-5792-4EFC-9F54-3317933EA4A0}" />
+    <Link Source="Persistence{38963147-55F3-4921-955E-2A1B4A9A7F9C}" Target="(@3)" Category="Contains" FetchingParent="Persistence{38963147-55F3-4921-955E-2A1B4A9A7F9C}" />
+    <Link Source="Persistence{9D69D8E9-C6B4-49AB-BC93-BD69422AE693}" Target="(@4)" Category="Contains" FetchingParent="Persistence{9D69D8E9-C6B4-49AB-BC93-BD69422AE693}" />
+    <Link Source="Persistence{B4374373-DA0A-4916-BBE8-9D35689790BC}" Target="(@5)" Category="Contains" FetchingParent="Persistence{B4374373-DA0A-4916-BBE8-9D35689790BC}" />
+    <Link Source="Persistence{C2A3C365-47BF-4460-A0C9-BE8A691F47BC}" Target="(@2)" Category="Contains" FetchingParent="Persistence{C2A3C365-47BF-4460-A0C9-BE8A691F47BC}" />
+    <Link Source="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" Target="API{C44A4A2B-65BB-4D4C-84B8-3019A156D6DB}" Category="Contains" FetchingParent="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" />
+    <Link Source="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" Target="Models{E04E08CB-5792-4EFC-9F54-3317933EA4A0}" Category="Contains" FetchingParent="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" />
+    <Link Source="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" Target="Persistence{C2A3C365-47BF-4460-A0C9-BE8A691F47BC}" Category="Contains" FetchingParent="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" />
+    <Link Source="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" Target="Services{829E1EB1-42A5-4B78-8CD9-1DE90225C4E0}" Category="Contains" FetchingParent="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" />
+    <Link Source="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" Target="Clientes{9B65CC5A-C36A-45DE-8CF2-0762B1C4DF12}" Category="Contains" FetchingParent="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" />
+    <Link Source="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" Target="Common{7C292177-9174-4F20-992D-BD397B301979}" Category="Contains" FetchingParent="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" />
+    <Link Source="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" Target="Diagnosticos{C9A28E54-B1C0-4312-934B-6F1270DA8051}" Category="Contains" FetchingParent="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" />
+    <Link Source="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" Target="Identity{28FC590C-5D77-44AE-89B5-4E63D0DC9A93}" Category="Contains" FetchingParent="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" />
+    <Link Source="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" Target="Personal{71FE119C-CDCE-47B3-A377-A67D2DBF2D3E}" Category="Contains" FetchingParent="Services{6409BD0C-B339-4BA2-82D6-97C285729650}" />
+    <Link Source="Services{829E1EB1-42A5-4B78-8CD9-1DE90225C4E0}" Target="(@20)" Category="Contains" FetchingParent="Services{829E1EB1-42A5-4B78-8CD9-1DE90225C4E0}" />
+    <Link Source="Services{829E1EB1-42A5-4B78-8CD9-1DE90225C4E0}" Target="(@26)" Category="Contains" FetchingParent="Services{829E1EB1-42A5-4B78-8CD9-1DE90225C4E0}" />
+    <Link Source="Services{864D4844-E858-4DAD-AC1D-838CF0F76B18}" Target="(@23)" Category="Contains" FetchingParent="Services{864D4844-E858-4DAD-AC1D-838CF0F76B18}" />
+    <Link Source="Services{864D4844-E858-4DAD-AC1D-838CF0F76B18}" Target="(@29)" Category="Contains" FetchingParent="Services{864D4844-E858-4DAD-AC1D-838CF0F76B18}" />
+    <Link Source="Services{92902B0D-94E7-4F9C-82AC-0225732F80C8}" Target="(@21)" Category="Contains" FetchingParent="Services{92902B0D-94E7-4F9C-82AC-0225732F80C8}" />
+    <Link Source="Services{92902B0D-94E7-4F9C-82AC-0225732F80C8}" Target="(@27)" Category="Contains" FetchingParent="Services{92902B0D-94E7-4F9C-82AC-0225732F80C8}" />
+    <Link Source="Services{A16BB7A7-EAB8-4B13-BA5C-6C0DB3A5877B}" Target="(@22)" Category="Contains" FetchingParent="Services{A16BB7A7-EAB8-4B13-BA5C-6C0DB3A5877B}" />
+    <Link Source="Services{A16BB7A7-EAB8-4B13-BA5C-6C0DB3A5877B}" Target="(@28)" Category="Contains" FetchingParent="Services{A16BB7A7-EAB8-4B13-BA5C-6C0DB3A5877B}" />
+    <Link Source="Testing{1EC4DBA1-D34F-4DF2-B1AF-369173F723F6}" Target="(@30)" Category="Contains" FetchingParent="Testing{1EC4DBA1-D34F-4DF2-B1AF-369173F723F6}" />
+    <Link Source="Testing{1EC4DBA1-D34F-4DF2-B1AF-369173F723F6}" Target="(@31)" Category="Contains" FetchingParent="Testing{1EC4DBA1-D34F-4DF2-B1AF-369173F723F6}" />
+  </Links>
+  <Categories>
+    <Category Id="CodeMap_SolutionFolder" Label="Carpeta de soluciones" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Carpeta de soluciones" />
+    <Category Id="CodeSchema_Assembly" Label="Ensamblado" BasedOn="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Assembly" NavigationActionLabel="Ensamblados" />
+    <Category Id="Contains" Label="Contiene" Description="Indica si el origen del vínculo contiene el objeto de destino." CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contenido por" IsContainment="True" OutgoingActionLabel="Contiene" />
+    <Category Id="File" Label="Archivo" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="File" NavigationActionLabel="Archivos" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="DataVirtualized" Label="Datos virtualizados" Description="Si es true, el gráfico puede contener nodos y vínculos que representan datos de los nodos o vínculos virtualizados (es decir, no creados realmente en el gráfico)." DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="DelayedChildNodesState" Label="Estado de nodos secundarios retrasados" Description="No se especifica si el estado de los nodos secundarios retrasados no está especificado. NotFetched si el grupo contiene nodos secundarios no recuperados aún en el gráfico. Fetched si el grupo ya ha recuperado todos los nodos secundarios retrasados." DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="FetchingParent" DataType="Microsoft.VisualStudio.GraphModel.GraphNodeId" />
+    <Property Id="Group" Label="Grupo" Description="Muestra el nodo como grupo" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Etiqueta" Description="Etiqueta Displayable de un objeto Annotatable." DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="Visibility" Label="Visibilidad" Description="Define si un nodo del gráfico está visible o no." DataType="System.Windows.Visibility" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Ensamblado" ValueType="Uri" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(5611905f-0346-4986-9a36-471fbfac4305.OutputPathUri)" />
+    <Alias n="2" Uri="Assembly=$(38e458fe-2033-4215-9969-1384152155e8.OutputPathUri)" />
+    <Alias n="3" Uri="Assembly=$(a9287f0d-70be-4f4c-8ff9-86f518f8b398.OutputPathUri)" />
+    <Alias n="4" Uri="Assembly=$(59123b67-c9d8-49d3-80ae-8e25608d4d8b.OutputPathUri)" />
+    <Alias n="5" Uri="Assembly=$(1d5bd080-ca46-42f6-8df6-68ea7f64b2cb.OutputPathUri)" />
+    <Alias n="6" Uri="Assembly=$(63693514-3972-49f6-94d9-57408775babe.OutputPathUri)" />
+    <Alias n="7" Uri="Assembly=$(60ac8f26-a554-4acd-8f3e-4f3d3b3faefd.OutputPathUri)" />
+    <Alias n="8" Uri="Assembly=$(319baf2a-7229-43f0-a95d-420668586ac3.OutputPathUri)" />
+    <Alias n="9" Uri="Assembly=$(946e29d8-72ed-4104-a9b0-a47d2a065a1b.OutputPathUri)" />
+    <Alias n="10" Uri="Assembly=$(910f3437-895e-460d-aa6d-3514cc745ada.OutputPathUri)" />
+    <Alias n="11" Uri="Assembly=$(6550eaa1-b9d5-4254-8ec1-553ab713b288.OutputPathUri)" />
+    <Alias n="12" Uri="Assembly=$(d6c53733-6721-4789-9e1c-7691d44bb58b.OutputPathUri)" />
+    <Alias n="13" Uri="Assembly=$(2465566f-c759-47fd-bda6-12c8ccb72495.OutputPathUri)" />
+    <Alias n="14" Uri="Assembly=$(5dcf27e2-97c0-4e25-8b7d-49f228c82f4b.OutputPathUri)" />
+    <Alias n="15" Uri="Assembly=$(c954db8c-9bb2-46a6-9e26-99ecebe7ceae.OutputPathUri)" />
+    <Alias n="16" Uri="Assembly=$(88407a2f-6e90-488b-b2c1-77e805b8cb4a.OutputPathUri)" />
+    <Alias n="17" Uri="Assembly=$(583d63e2-a57b-4d8c-840f-64accabed6c4.OutputPathUri)" />
+    <Alias n="18" Uri="Assembly=$(9bc81e4d-8e42-40d5-8bd8-21f28ac9f049.OutputPathUri)" />
+    <Alias n="19" Uri="Assembly=$(8539e28d-af81-47dd-9a67-009fcf08035e.OutputPathUri)" />
+    <Alias n="20" Uri="Assembly=$(85cbc406-be47-4b66-a3ed-666f02d94968.OutputPathUri)" />
+    <Alias n="21" Uri="Assembly=$(d2db87ea-5237-4126-ba07-c2a95c4ce8c3.OutputPathUri)" />
+    <Alias n="22" Uri="Assembly=$(a4de5dcd-40ab-44a5-8a61-b97108c06e5f.OutputPathUri)" />
+    <Alias n="23" Uri="Assembly=$(0fa69b8d-734d-4d95-ad61-25a27bf1c4f0.OutputPathUri)" />
+    <Alias n="24" Uri="Assembly=$(54e0695c-891a-4303-a194-979507ee6305.OutputPathUri)" />
+    <Alias n="25" Uri="Assembly=$(47fa4d2d-ff3d-4d36-aca9-d85c14d060ba.OutputPathUri)" />
+    <Alias n="26" Uri="Assembly=$(517d2804-ed93-41fc-9a78-161100156b05.OutputPathUri)" />
+    <Alias n="27" Uri="Assembly=$(3e04ab91-e50e-41d7-9d5b-d11e1b3fb039.OutputPathUri)" />
+    <Alias n="28" Uri="Assembly=$(74ad4db3-8ccf-4c6c-a9e3-3abaecaf1c22.OutputPathUri)" />
+    <Alias n="29" Uri="Assembly=$(9ca87ad9-eb87-49af-b1d7-ab90337a042a.OutputPathUri)" />
+    <Alias n="30" Uri="Assembly=$(a6d7e5a1-07d7-4faa-b97c-e5b7641df245.OutputPathUri)" />
+    <Alias n="31" Uri="Assembly=$(eca45a1f-dcb9-4521-a92a-1f2dd9303b3e.OutputPathUri)" />
+    <Alias n="32" Uri="Assembly=$(ff794f9e-10a7-4894-ab6c-4f4788ab9d43.OutputPathUri)" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Resultados" ValueLabel="Verdadero">
+      <Condition Expression="HasCategory('QueryResult')" />
+      <Setter Property="Background" Value="#FFBCFFBE" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Proyecto de prueba" ValueLabel="Proyecto de prueba">
+      <Condition Expression="HasCategory('CodeMap_TestProject')" />
+      <Setter Property="Icon" Value="CodeMap_TestProject" />
+      <Setter Property="Background" Value="#FF307A69" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Proyecto web" ValueLabel="Proyecto web">
+      <Condition Expression="HasCategory('CodeMap_WebProject')" />
+      <Setter Property="Icon" Value="CodeMap_WebProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Proyecto de la Tienda Windows" ValueLabel="Proyecto de la Tienda Windows">
+      <Condition Expression="HasCategory('CodeMap_WindowsStoreProject')" />
+      <Setter Property="Icon" Value="CodeMap_WindowsStoreProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Proyecto de teléfono" ValueLabel="Proyecto de teléfono">
+      <Condition Expression="HasCategory('CodeMap_PhoneProject')" />
+      <Setter Property="Icon" Value="CodeMap_PhoneProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Biblioteca portable" ValueLabel="Biblioteca portable">
+      <Condition Expression="HasCategory('CodeMap_PortableLibraryProject')" />
+      <Setter Property="Icon" Value="CodeMap_PortableLibraryProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Proyecto de WPF" ValueLabel="Proyecto de WPF">
+      <Condition Expression="HasCategory('CodeMap_WpfProject')" />
+      <Setter Property="Icon" Value="CodeMap_WpfProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Proyecto de VSIX" ValueLabel="Proyecto de VSIX">
+      <Condition Expression="HasCategory('CodeMap_VsixProject')" />
+      <Setter Property="Icon" Value="CodeMap_VsixProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Proyecto de modelado" ValueLabel="Proyecto de modelado">
+      <Condition Expression="HasCategory('CodeMap_ModelingProject')" />
+      <Setter Property="Icon" Value="CodeMap_ModelingProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Ensamblado" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Assembly')" />
+      <Setter Property="Background" Value="#FF094167" />
+      <Setter Property="Stroke" Value="#FF094167" />
+      <Setter Property="Icon" Value="CodeSchema_Assembly" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Espacio de nombres" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+      <Setter Property="Background" Value="#FF0E619A" />
+      <Setter Property="Stroke" Value="#FF0E619A" />
+      <Setter Property="Icon" Value="CodeSchema_Namespace" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Interfaz" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Interface')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Interface" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Struct" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Struct')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Struct" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Enumeración" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Enum')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Enum" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Delegado" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Delegate')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Delegate" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Clase" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Type')" />
+      <Setter Property="Background" Value="#FF0E70C0" />
+      <Setter Property="Stroke" Value="#FF0E70C0" />
+      <Setter Property="Icon" Value="CodeSchema_Class" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Propiedad" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Property')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Property" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Método" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Method') Or HasCategory('CodeSchema_CallStackUnresolvedMethod')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Method" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Evento" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Event')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Event" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Campo" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Field')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Field" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Parámetro out" ValueLabel="Tiene categoría">
+      <Condition Expression="CodeSchemaProperty_IsOut = 'True'" />
+      <Setter Property="Icon" Value="CodeSchema_OutParameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Parámetro" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_Parameter')" />
+      <Setter Property="Icon" Value="CodeSchema_Parameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Variable local" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('CodeSchema_LocalExpression')" />
+      <Setter Property="Icon" Value="CodeSchema_LocalExpression" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Externos" ValueLabel="Tiene categoría">
+      <Condition Expression="HasCategory('Externals')" />
+      <Setter Property="Background" Value="#FF424242" />
+      <Setter Property="Stroke" Value="#FF424242" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Se hereda de" ValueLabel="True">
+      <Condition Expression="HasCategory('InheritsFrom')" />
+      <Setter Property="Stroke" Value="#FF00A600" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Implementa" ValueLabel="True">
+      <Condition Expression="HasCategory('Implements')" />
+      <Setter Property="Stroke" Value="#8000A600" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Llamadas" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Calls')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Puntero de función" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FunctionPointer')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Lectura de campo" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FieldRead')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Escritura de campo" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FieldWrite')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="DrawArrow" Value="true" />
+      <Setter Property="IsHidden" Value="false" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Inherits From" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('InheritsFrom') And Target.HasCategory('CodeSchema_Class')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Implements" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('Implements') And Target.HasCategory('CodeSchema_Interface')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Comment Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="Source.HasCategory('Comment')" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Cursor Location Changed" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="IsCursorLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Disabled Breakpoint Location Changed" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="DisabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Enabled Breakpoint Location Changed" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="EnabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Instruction Pointer Location Changed" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="IsInstructionPointerLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Current Callstack Changed" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="IsCurrentCallstackFrame" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Volver" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeSchema_ReturnTypeLink')" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Referencias" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="HasCategory('References')" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Usa el atributo" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeSchema_AttributeUse')" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Carpeta de soluciones" ValueLabel="Verdadero" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeMap_SolutionFolder')" />
+      <Setter Property="Background" Value="#FFDEBA83" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Referencia de proyecto" ValueLabel="Referencia de proyecto">
+      <Condition Expression="HasCategory('CodeMap_ProjectReference')" />
+      <Setter Property="Stroke" Value="#9A9A9A" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Referencia externa" ValueLabel="Referencia externa">
+      <Condition Expression="HasCategory('CodeMap_ExternalReference')" />
+      <Setter Property="Stroke" Value="#9A9A9A" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="0fa69b8d-734d-4d95-ad61-25a27bf1c4f0.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Identity/Identity.Service.Queries/bin/Debug/netcoreapp3.1/Identity.Service.Queries.dll" />
+    <Path Id="1d5bd080-ca46-42f6-8df6-68ea7f64b2cb.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Identity/Identity.Persistence.Database/bin/Debug/netcoreapp3.1/Identity.Persistence.Database.dll" />
+    <Path Id="2465566f-c759-47fd-bda6-12c8ccb72495.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Personal/Personal.Domain/bin/Debug/netcoreapp3.1/Personal.Domain.dll" />
+    <Path Id="319baf2a-7229-43f0-a95d-420668586ac3.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Common/Services.Common.Mapping/bin/Debug/netcoreapp3.1/Services.Common.Mapping.dll" />
+    <Path Id="38e458fe-2033-4215-9969-1384152155e8.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Personal/Personal.Persistence.Database/bin/Debug/netcoreapp3.1/Personal.Persistence.Database.dll" />
+    <Path Id="3e04ab91-e50e-41d7-9d5b-d11e1b3fb039.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Clientes/Clientes.Service.EventHandlers/bin/Debug/netcoreapp3.1/Clientes.Service.EventHandlers.dll" />
+    <Path Id="47fa4d2d-ff3d-4d36-aca9-d85c14d060ba.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Gateways/Api.Gateway.Models/bin/Debug/netcoreapp3.1/Api.Gateway.Models.dll" />
+    <Path Id="517d2804-ed93-41fc-9a78-161100156b05.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Personal/Personal.Service.EventHandlers/bin/Debug/netcoreapp3.1/Personal.Service.EventHandlers.dll" />
+    <Path Id="54e0695c-891a-4303-a194-979507ee6305.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Gateways/Api.Gateway.Proxies/bin/Debug/netcoreapp3.1/Api.Gateway.Proxies.dll" />
+    <Path Id="5611905f-0346-4986-9a36-471fbfac4305.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Clients/DesktopClient/SistemaDiagnostico.Presentacion/bin/Debug/SistemaDiagnostico.Presentacion.exe" />
+    <Path Id="583d63e2-a57b-4d8c-840f-64accabed6c4.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Common/Services.Common.Collection/bin/Debug/netcoreapp3.1/Services.Common.Collection.dll" />
+    <Path Id="59123b67-c9d8-49d3-80ae-8e25608d4d8b.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Diagnosticos/Diagnosticos.Persistence.Database/bin/Debug/netcoreapp3.1/Diagnosticos.Persistence.Database.dll" />
+    <Path Id="5dcf27e2-97c0-4e25-8b7d-49f228c82f4b.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Clientes/Clientes.Domain/bin/Debug/netcoreapp3.1/Clientes.Domain.dll" />
+    <Path Id="60ac8f26-a554-4acd-8f3e-4f3d3b3faefd.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Common/Common.Logging/bin/Debug/netcoreapp3.1/Common.Logging.dll" />
+    <Path Id="63693514-3972-49f6-94d9-57408775babe.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Common/Services.Common.Paging/bin/Debug/netcoreapp3.1/Services.Common.Paging.dll" />
+    <Path Id="6550eaa1-b9d5-4254-8ec1-553ab713b288.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Diagnosticos/Diagnosticos.Api/bin/Debug/netcoreapp3.1/Diagnosticos.Api.dll" />
+    <Path Id="74ad4db3-8ccf-4c6c-a9e3-3abaecaf1c22.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Diagnosticos/Diagnosticos.Service.EventHandlers/bin/Debug/netcoreapp3.1/Diagnosticos.Service.EventHandlers.dll" />
+    <Path Id="8539e28d-af81-47dd-9a67-009fcf08035e.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Clients/DesktopClient/SistemaDiagnostico.Negocio/bin/Debug/SistemaDiagnostico.Negocio.dll" />
+    <Path Id="85cbc406-be47-4b66-a3ed-666f02d94968.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Personal/Personal.Service.Queries/bin/Debug/netcoreapp3.1/Personal.Service.Queries.dll" />
+    <Path Id="88407a2f-6e90-488b-b2c1-77e805b8cb4a.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Identity/Identity.Domain/bin/Debug/netcoreapp3.1/Identity.Domain.dll" />
+    <Path Id="910f3437-895e-460d-aa6d-3514cc745ada.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Clientes/Clientes.Api/bin/Debug/netcoreapp3.1/Clientes.Api.dll" />
+    <Path Id="946e29d8-72ed-4104-a9b0-a47d2a065a1b.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Personal/Personal.Api/bin/Debug/netcoreapp3.1/Personal.Api.dll" />
+    <Path Id="9bc81e4d-8e42-40d5-8bd8-21f28ac9f049.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Clientes/Clientes.Common/bin/Debug/netcoreapp3.1/Clientes.Common.dll" />
+    <Path Id="9ca87ad9-eb87-49af-b1d7-ab90337a042a.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Identity/Identity.Service.EventHandlers/bin/Debug/netcoreapp3.1/Identity.Service.EventHandlers.dll" />
+    <Path Id="a4de5dcd-40ab-44a5-8a61-b97108c06e5f.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Diagnosticos/Diagnosticos.Service.Queries/bin/Debug/netcoreapp3.1/Diagnosticos.Service.Queries.dll" />
+    <Path Id="a6d7e5a1-07d7-4faa-b97c-e5b7641df245.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Diagnosticos/Diagnosticos.Bdd.Tests/bin/Debug/netcoreapp3.1/Diagnosticos.Bdd.Tests.dll" />
+    <Path Id="a9287f0d-70be-4f4c-8ff9-86f518f8b398.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Clientes/Clientes.Persistence.Database/bin/Debug/netcoreapp3.1/Clientes.Persistence.Database.dll" />
+    <Path Id="c954db8c-9bb2-46a6-9e26-99ecebe7ceae.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Diagnosticos/Diagnosticos.Domain/bin/Debug/netcoreapp3.1/Diagnosticos.Domain.dll" />
+    <Path Id="d2db87ea-5237-4126-ba07-c2a95c4ce8c3.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Clientes/Clientes.Service.Queries/bin/Debug/netcoreapp3.1/Clientes.Service.Queries.dll" />
+    <Path Id="d6c53733-6721-4789-9e1c-7691d44bb58b.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Identity/Identity.Api/bin/Debug/netcoreapp3.1/Identity.Api.dll" />
+    <Path Id="eca45a1f-dcb9-4521-a92a-1f2dd9303b3e.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Services/Diagnosticos/Diagnosticos.Tests/bin/Debug/netcoreapp3.1/Diagnosticos.Tests.dll" />
+    <Path Id="ff794f9e-10a7-4894-ab6c-4f4788ab9d43.OutputPathUri" Value="file:///C:/Users/AbrahamLIPACALABILLA/source/repos/Diagnostico/src/Gateways/Api.Gateway.DesktopClient/bin/Debug/netcoreapp3.1/Api.Gateway.DesktopClient.dll" />
+  </Paths>
+</DirectedGraph>

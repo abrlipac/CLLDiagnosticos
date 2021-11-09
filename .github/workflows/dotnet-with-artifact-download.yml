@@ -1,0 +1,62 @@
+name: .NET with artifact download
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish
+    - name: Upload Common Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Common
+        path: ${{ github.workspace }}/src/Common/**/bin/Debug/netcoreapp3.1/publish/
+    - name: Upload Gateways Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Gateways
+        path: ${{ github.workspace }}/src/Gateways/**/bin/Debug/netcoreapp3.1/publish/
+    - name: Upload Clientes Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Clientes
+        path: ${{ github.workspace }}/src/Services/Clientes/**/bin/Debug/netcoreapp3.1/publish/
+    - name: Upload Services.Common Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Services.Common
+        path: ${{ github.workspace }}/src/Services/Common/**/bin/Debug/netcoreapp3.1/publish/
+    - name: Upload Diagnosticos Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Diagnosticos
+        path: ${{ github.workspace }}/src/Services/Diagnosticos/**/bin/Debug/netcoreapp3.1/publish/
+    - name: Upload Identity Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Identity
+        path: ${{ github.workspace }}/src/Services/Identity/**/bin/Debug/netcoreapp3.1/publish/
+    - name: Upload Personal Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Personal
+        path: ${{ github.workspace }}/src/Services/Personal/**/bin/Debug/netcoreapp3.1/publish/

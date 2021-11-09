@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <CodeAnalysisRuleSet>..\..\..\..\.sonarlint\diagnosticocsharp.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\..\.sonarlint\diagnostico\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Services.Common.Mapping\Services.Common.Mapping.csproj" />
+    <ProjectReference Include="..\..\Common\Services.Common.Paging\Services.Common.Paging.csproj" />
+    <ProjectReference Include="..\Identity.Persistence.Database\Identity.Persistence.Database.csproj" />
+  </ItemGroup>
+
+</Project>
