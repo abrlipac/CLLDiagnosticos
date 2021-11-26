@@ -1,0 +1,51 @@
+@page "/login"
+@using Newtonsoft.Json;
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <EditForm Model=@Usuario OnValidSubmit=@ValidSubmitHandler>
+            <h3 class="text-center mb-4">Login</h3>
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-floating mb-3">
+                <InputText type="email" class="form-control" id="username" placeholder="name@example.com" @bind-Value="Usuario.UserName" />
+                <label for="username" class="form-label">Nombre de usuario</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText type="password" class="form-control" id="password" @bind-Value="Usuario.Password" />
+                <label for="password" class="form-label">Contraseña</label>
+            </div>
+
+            <div class="mb-3 form-check">
+                <label class="form-check-label" for="remember-me">Recuérdame</label>
+                <input type="checkbox" class="form-check-input" id="remember-me">
+            </div>
+
+            <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Log in" />
+
+            <div class="text-center">
+                <a href="/signup" class="btn btn-outline-secondary w-100">Registrarse</a>
+            </div>
+
+            <div class="resp"></div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    public UsuarioLoginCommand Usuario { get; set; } = new UsuarioLoginCommand();
+
+    public void ValidSubmitHandler()
+    {
+
+        Repository.IdentityRepository repo = new Repository.IdentityRepository();
+        var resp = repo.PostResponse("/", JsonConvert.SerializeObject(Usuario, Formatting.Indented));
+        if (resp.IsSuccessStatusCode)
+        {
+            var a = resp.Content;
+        }
+    }
+}

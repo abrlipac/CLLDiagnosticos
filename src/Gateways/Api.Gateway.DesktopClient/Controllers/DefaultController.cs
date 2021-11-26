@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Gateway.DesktopClient
+namespace Api.Gateway.WebClient
 {
     [ApiController]
     [Route("/")]

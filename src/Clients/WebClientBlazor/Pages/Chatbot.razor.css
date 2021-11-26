@@ -1,0 +1,29 @@
+:root {
+    --primary-color: #af1c17;
+}
+.chatbot {
+    border: 1px solid #af1c17;
+}
+.chatbot__header {
+    background-color: #af1c17;
+}
+.chatbot__send {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+@media (max-width: 720px) {
+    .chatbot {
+        width: 100%;
+    }
+}
+@media (min-width: 721px) and (max-width: 1080px) {
+    .chatbot {
+        width: 80%;
+    }
+}
+@media (min-width: 1081px) {
+    .chatbot {
+        width: 50%;
+    }
+}

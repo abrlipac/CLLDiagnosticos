@@ -3,7 +3,7 @@ using Api.Gateway.Proxies;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Api.Gateway.DesktopClient
+namespace Api.Gateway.WebClient
 {
     [ApiController]
     [Route("identity")]

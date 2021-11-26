@@ -1,0 +1,46 @@
+﻿<div class="container d-flex flex-row @(!mensaje.EsPregunta ? "justify-content-end" : "")">
+    @if (mensaje.EsPregunta)
+    {
+        <div class="chatbot__boticon rounded-circle pr-2">
+            <img src="img/bot.svg" class="w-100 h-100" />
+        </div>
+    }
+    <div>
+        <div class="chatbot__message btn">
+            @mensaje.Contenido
+        </div>
+        @if (mensaje.Opciones != null)
+        {
+            <div class="chatbot__options d-flex pt-1">
+                @foreach (var opcion in mensaje.Opciones)
+                {
+                    <button class="btn btn-outline-secondary" @onclick="() => {
+                    mensaje.OpcionElegida = opcion;
+                    alElegirOpcion.InvokeAsync(mensaje);
+                }">
+                        @opcion
+                    </button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public Models.Mensaje mensaje { get; set; }
+    [Parameter]
+    public EventCallback<Models.Mensaje> alElegirOpcion { get; set; }
+    [Parameter]
+    public Chatbot parent { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender && mensaje.Contenido != null && mensaje.Contenido.Equals("Bienvenido!"))
+        {
+            parent.AgregarSgtePregunta();
+            base.OnAfterRender(firstRender);
+        }
+    }
+}

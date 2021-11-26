@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Api.Gateway.DesktopClient.Config
+namespace Api.Gateway.WebClient.Config
 {
     public static class StartUpConfiguration
     {

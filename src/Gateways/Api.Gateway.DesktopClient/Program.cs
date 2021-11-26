@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Api.Gateway.DesktopClient
+namespace Api.Gateway.WebClient
 {
     public static class Program
     {

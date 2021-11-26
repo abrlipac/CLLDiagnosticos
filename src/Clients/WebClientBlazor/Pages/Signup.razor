@@ -1,0 +1,90 @@
+@page "/signup"
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <form class="form" action="" method="post">
+            <h3 class="text-center mb-4">Crea tu cuenta</h3>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nombres" name="nombres" placeholder="">
+                <label for="nombres" class="form-label">Nombres</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="">
+                <label for="apellidos" class="form-label">Apellidos</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="dni" name="dni" placeholder="">
+                <label for="dni" class="form-label">DNI</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="region" name="region">
+                    <option value="">Seleccione una opción</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Ancash">Ancash</option>
+                    <option value="Apurímac">Apurímac</option>
+                    <option value="Arequipa">Arequipa</option>
+                    <option value="Ayacucho">Ayacucho</option>
+                    <option value="Cajamarca">Cajamarca</option>
+                    <option value="Callao">Callao</option>
+                    <option value="Cuzco">Cuzco </option>
+                    <option value="Huancavelica">Huancavelica</option>
+                    <option value="Huánuco">Huánuco</option>
+                    <option value="Ica">Ica</option>
+                    <option value="Junín">Junín</option>
+                    <option value="La_Libertad">La Libertad</option>
+                    <option value="Lambayeque">Lambayeque</option>
+                    <option value="Lima">Lima</option>
+                    <option value="Loreto">Loreto</option>
+                    <option value="Madre_de_Dios">Madre de Dios</option>
+                    <option value="Moquegua">Moquegua</option>
+                    <option value="Pasco">Pasco</option>
+                    <option value="Piura">Piura</option>
+                    <option value="Puno">Puno</option>
+                    <option value="San_Martín">San Martín</option>
+                    <option value="Tacna">Tacna</option>
+                    <option value="Tumbes">Tumbes</option>
+                    <option value="Ucayali">Ucayali</option>
+                </select>
+                <label for="region">Región</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="sexo" name="sexo">
+                    <option selected>Seleccione una opción</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <label for="sexo">Sexo</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="celular" name="celular" placeholder="">
+                <label for="celular" class="form-label">Celular</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" name="email" placeholder="">
+                <label for="email" class="form-label">Email</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" name="password" placeholder="">
+                <label for="password" class="form-label">Contraseña</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="repeat-password" name="repeat-password" placeholder="">
+                <label for="repeat-password" class="form-label">Vuelva a ingresar su contraseña</label>
+            </div>
+
+            <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Crear cuenta" />
+
+            <a href="/signup" class="btn btn-outline-secondary w-100">Login</a>
+        </form>
+    </div>
+</div>

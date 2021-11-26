@@ -1,0 +1,105 @@
+﻿@page "/diagnosticos/chatbot"
+
+@inject NavigationManager NavigationManager
+
+<div class="chatbot m-auto h-100 rounded overflow-hidden d-flex flex-column">
+    <div class="chatbot__header p-3 text-white">
+        <h2 class="h3 text-white m-0">CLL - Chatbot</h2>
+    </div>
+    <div class="chatbot__messages py-2 flex-grow-1" style="overflow-y: scroll">
+        <Mensaje mensaje=@(new Models.Mensaje() { Contenido = "Bienvenido!", EsPregunta = true }) parent=@this />
+
+        @foreach (var mensaje in Mensajes)
+        {
+            if (mensaje.Opciones?.Count > 0)
+            {
+                <Mensaje mensaje=mensaje alElegirOpcion=ElegirOpcionHandler />
+            }
+            else
+            {
+                <Mensaje mensaje=mensaje />
+            }
+        }
+        @if (noHayMasPreguntas)
+        {
+            <Mensaje mensaje=@(new Models.Mensaje() { Contenido = "Muchas gracias por responder!", EsPregunta = true }) parent=@this />
+        }
+    </div>
+    <div class="chatbot__footer d-flex flex-row p-2 align-items-center">
+        <input class="form-control" placeholder="Ingrese un dato" @bind=@DatoIngresado @oninput="(e => DatoIngresado = (string) e.Value)" @onkeydown=EnterSubmit>
+        <button class="chatbot__send btn btn-outline-secondary rounded-circle ms-2 d-flex align-items-center" @onclick=ClickSubmit>
+            <img src="img/send.png" class="w-100" />
+        </button>
+    </div>
+</div>
+
+@if (noHayMasPreguntas)
+{
+    <a href="/diagnosticos/resultados" class="btn btn-primary">Ver resultados</a>
+}
+
+@code {
+
+    private static int iter = -1;
+
+    private bool noHayMasPreguntas;
+
+    public List<Models.Mensaje> Mensajes = new();
+
+    public string DatoIngresado { get; set; }
+
+    public void ElegirOpcionHandler(Models.Mensaje mensaje)
+    {
+        EnviarDato(mensaje.OpcionElegida);
+        mensaje.Opciones = null;
+    }
+
+    public void AgregarSgtePregunta()
+    {
+        if (++iter < PreguntasRespuestas.Count)
+        {
+            var pregunta = PreguntasRespuestas[iter];
+            Mensajes.Add(new Models.Mensaje() { Contenido = pregunta.Pregunta, EsPregunta = true, Opciones = pregunta.Opciones });
+
+            StateHasChanged();
+        }
+        else
+        {
+            noHayMasPreguntas = true;
+            iter = -1;
+        }
+    }
+
+    public List<Models.PreguntaRespuesta> PreguntasRespuestas = new()
+    {
+            new("Elija una especialidad", new List<string> {
+            "Cardiología",
+            "Alergología",
+            "Pediatría" }, null),
+            new("¿Cuál es su temperatura?", null, null),
+            new("¿Tiene sudoración?", new List<string> {
+            "Sí",
+            "No" }, null),
+        };
+
+
+    public void EnterSubmit(KeyboardEventArgs args)
+    {
+        if (args.Code == "Enter" || args.Code == "NumpadEnter")
+            EnviarDato(DatoIngresado);
+    }
+
+    public void ClickSubmit()
+    {
+        EnviarDato(DatoIngresado);
+    }
+
+    public void EnviarDato(string dato)
+    {
+        Mensajes.Add(new Models.Mensaje() { Contenido = dato, EsPregunta = false });
+        PreguntasRespuestas[iter].Respuesta = dato;
+        DatoIngresado = null;
+
+        AgregarSgtePregunta();
+    }
+}

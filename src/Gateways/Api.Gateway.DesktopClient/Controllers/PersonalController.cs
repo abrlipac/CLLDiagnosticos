@@ -7,7 +7,7 @@ using Api.Gateway.Models.Personal.DTOs;
 using Api.Gateway.Models;
 using Api.Gateway.Models.Personal.Commands;
 
-namespace Api.Gateway.DesktopClient
+namespace Api.Gateway.WebClient
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]

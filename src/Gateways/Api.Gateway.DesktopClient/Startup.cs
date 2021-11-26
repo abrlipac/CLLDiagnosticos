@@ -1,4 +1,4 @@
-using Api.Gateway.DesktopClient.Config;
+using Api.Gateway.WebClient.Config;
 using Common.Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace Api.Gateway.DesktopClient
+namespace Api.Gateway.WebClient
 {
     public class Startup
     {

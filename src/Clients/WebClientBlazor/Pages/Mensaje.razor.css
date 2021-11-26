@@ -1,0 +1,14 @@
+﻿:root {
+    --primary-color: #af1c17;
+}
+.chatbot__boticon {
+    width: 3rem;
+    height: 3rem;
+}
+.chatbot__message {
+    background-color: #af1c17;
+    color: white;
+}
+.chatbot__options {
+    gap: .25rem;
+}
