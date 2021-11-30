@@ -1,4 +1,4 @@
-﻿@model WebClient.Models.LoginViewModel
+﻿@model WebClientCore.Models.LoginViewModel
 
 @{
     ViewData["Title"] = "Login";
@@ -11,18 +11,22 @@
 <div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-action="Login">
+            @if (Model.HasInvalidAccess)
+            {
+                <div class="alert alert-danger">Acceso denegado</div>
+            }
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Login.Username" class="form-control" placeholder="name@example.com" />
-                <label asp-for="Login.Username" class="form-label">Usuario</label>
-                <span asp-validation-for="Login.Username" class="text-danger"></span>
+                <input asp-for="UsuarioLogin.UserName" class="form-control" placeholder="name@example.com" />
+                <label asp-for="UsuarioLogin.UserName" class="form-label">Usuario</label>
+                <span asp-validation-for="UsuarioLogin.UserName" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Login.Password" class="form-control" type="password" placeholder="***" />
-                <label asp-for="Login.Password" class="form-label">Contraseña</label>
-                <span asp-validation-for="Login.Password" class="text-danger"></span>
+                <input asp-for="UsuarioLogin.Password" class="form-control" type="password" placeholder="***" />
+                <label asp-for="UsuarioLogin.Password" class="form-label">Contraseña</label>
+                <span asp-validation-for="UsuarioLogin.Password" class="text-danger"></span>
             </div>
 
             <div class="mb-3 form-check">
@@ -33,7 +37,7 @@
             <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Log in" />
 
             <div class="text-center">
-                <a href="/signup" class="btn btn-outline-secondary w-100">Registrarse</a>
+                <a href="/account/signup" class="btn btn-outline-secondary w-100">Registrarse</a>
             </div>
         </form>
     </div>

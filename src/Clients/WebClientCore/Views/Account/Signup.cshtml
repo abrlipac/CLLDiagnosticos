@@ -1,42 +1,47 @@
-﻿@model WebClient.Models.LoginViewModel
+﻿@model WebClientCore.Models.UsuarioCreate
 
 @{
     ViewData["Title"] = "Signup";
 }
 
 <h1 class="text-center">Signup</h1>
-<h4 class="text-center">Regístrese para ingresar al sistema</h4>
-<hr class="col-md-4 mx-auto" />
+<h4 class="text-center">Regístrese para acceder al sistema</h4>
+<hr class="col-md-4 mx-auto"/>
 
 <div class="row justify-content-center">
     <div class="col-md-4">
-        <form asp-action="Login">
+        <form asp-action="Signup">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Login.Username" class="form-control" placeholder="name@example.com" />
-                <label asp-for="Login.Username" class="form-label">Usuario</label>
-                <span asp-validation-for="Login.Username" class="text-danger"></span>
+                <input asp-for="Empleado_Id" class="form-control" type="number" placeholder="1" />
+                <label asp-for="Empleado_Id" class="form-label">Id de empleado</label>
+                <span asp-validation-for="Empleado_Id" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Login.Password" class="form-control" type="password" placeholder="***" />
-                <label asp-for="Login.Password" class="form-label">Contraseña</label>
-                <span asp-validation-for="Login.Password" class="text-danger"></span>
+                <input asp-for="NombreCompleto" class="form-control" placeholder="John Doe" />
+                <label asp-for="NombreCompleto" class="form-label">Nombre completo</label>
+                <span asp-validation-for="NombreCompleto" class="text-danger"></span>
             </div>
 
-            <div class="mb-3 form-check">
-                <label class="form-check-label" for="remember-me">Recuérdame</label>
-                <input type="checkbox" class="form-check-input" id="remember-me">
+            <div class="form-floating mb-3">
+                <input asp-for="UserName" class="form-control" placeholder="johndoe" />
+                <label asp-for="UserName" class="form-label">Usuario</label>
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
 
-            <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Log in" />
+            <div class="form-floating mb-3">
+                <input asp-for="Password" class="form-control" type="password" placeholder="***" />
+                <label asp-for="Password" class="form-label">Contraseña</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Registrarse" />
 
             <div class="text-center">
-                <a href="/signup" class="btn btn-outline-secondary w-100">Registrarse</a>
+                <a href="/account/login" class="btn btn-outline-secondary w-100">Log in</a>
             </div>
-
-
         </form>
     </div>
 </div>

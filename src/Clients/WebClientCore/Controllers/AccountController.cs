@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using WebClient.Models;
+using WebClientCore.Models;
 
 namespace WebClientCore.Controllers
 {
@@ -25,15 +25,16 @@ namespace WebClientCore.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
+            if (!ModelState.IsValid)
+                return View();
+
             using (var client = new HttpClient())
             {
                 var content = new StringContent(
-                    JsonSerializer.Serialize(model.Login, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
+                    JsonSerializer.Serialize(model.UsuarioLogin, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
                     Encoding.UTF8,
                     "application/json"
                 );
-
-                var a = content.ToString();
 
                 var request = await client.PostAsync(_identityUrl + "identity/authentication", content);
 
@@ -51,14 +52,39 @@ namespace WebClientCore.Controllers
                     }
                 );
 
-                return Redirect(model.ReturnBaseUrl + $"account/connect?access_token={result.AccessToken}");
+                return Redirect(model.ReturnBaseUrl + $"connect?access_token={result.AccessToken}");
             }
         }
 
         [HttpGet]
-        public IActionResult Signup()
+        public ActionResult Signup()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Signup(UsuarioCreate model)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            using (var client = new HttpClient())
+            {
+                var content = new StringContent(
+                    JsonSerializer.Serialize(model, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
+                    Encoding.UTF8,
+                    "application/json"
+                );
+
+                var request = await client.PostAsync(_identityUrl + "identity", content);
+
+                if (!request.IsSuccessStatusCode)
+                {
+                    return View(model);
+                }
+
+                return Redirect("login");
+            }
         }
 
         [HttpGet]
@@ -73,12 +99,11 @@ namespace WebClientCore.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.nameid),
                 new Claim(ClaimTypes.Name, user.unique_name),
-                new Claim(ClaimTypes.Email, user.email),
                 new Claim("access_token", access_token)
             };
 
             var claimsIdentity = new ClaimsIdentity(
-                claims);
+                claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var authProperties = new AuthenticationProperties
             {
