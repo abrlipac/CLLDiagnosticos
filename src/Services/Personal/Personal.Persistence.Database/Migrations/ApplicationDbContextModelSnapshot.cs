@@ -19,7 +19,7 @@ namespace Personal.Persistence.Database.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
-            modelBuilder.Entity("Personal.Domain.Empleado", b =>
+            modelBuilder.Entity("Personal.Domain.Admin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,7 +31,8 @@ namespace Personal.Persistence.Database.Migrations
 
                     b.Property<string>("Apellidos")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Dni")
                         .IsRequired()
@@ -40,92 +41,113 @@ namespace Personal.Persistence.Database.Migrations
 
                     b.Property<string>("Nombres")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Usuario_Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Empleados");
+                    b.HasIndex("Dni")
+                        .IsUnique();
+
+                    b.HasIndex("Usuario_Id")
+                        .IsUnique()
+                        .HasFilter("[Usuario_Id] IS NOT NULL");
+
+                    b.ToTable("Administradores");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Activo = true,
-                            Apellidos = "Apellido 1",
+                            Apellidos = "Apellidos 1",
                             Dni = "76368626",
-                            Nombres = "Nombre 1"
+                            Nombres = "Nombres 1",
+                            Usuario_Id = "1"
                         },
                         new
                         {
                             Id = 2,
                             Activo = true,
-                            Apellidos = "Apellido 2",
+                            Apellidos = "Apellidos 2",
                             Dni = "76368627",
-                            Nombres = "Nombre 2"
+                            Nombres = "Nombres 2",
+                            Usuario_Id = "2"
                         },
                         new
                         {
                             Id = 3,
                             Activo = true,
-                            Apellidos = "Apellido 3",
+                            Apellidos = "Apellidos 3",
                             Dni = "76368628",
-                            Nombres = "Nombre 3"
+                            Nombres = "Nombres 3",
+                            Usuario_Id = "3"
                         },
                         new
                         {
                             Id = 4,
                             Activo = true,
-                            Apellidos = "Apellido 4",
+                            Apellidos = "Apellidos 4",
                             Dni = "76368629",
-                            Nombres = "Nombre 4"
+                            Nombres = "Nombres 4",
+                            Usuario_Id = "4"
                         },
                         new
                         {
                             Id = 5,
                             Activo = true,
-                            Apellidos = "Apellido 5",
+                            Apellidos = "Apellidos 5",
                             Dni = "76368630",
-                            Nombres = "Nombre 5"
+                            Nombres = "Nombres 5",
+                            Usuario_Id = "5"
                         },
                         new
                         {
                             Id = 6,
                             Activo = true,
-                            Apellidos = "Apellido 6",
+                            Apellidos = "Apellidos 6",
                             Dni = "76368631",
-                            Nombres = "Nombre 6"
+                            Nombres = "Nombres 6",
+                            Usuario_Id = "6"
                         },
                         new
                         {
                             Id = 7,
                             Activo = true,
-                            Apellidos = "Apellido 7",
+                            Apellidos = "Apellidos 7",
                             Dni = "76368632",
-                            Nombres = "Nombre 7"
+                            Nombres = "Nombres 7",
+                            Usuario_Id = "7"
                         },
                         new
                         {
                             Id = 8,
                             Activo = true,
-                            Apellidos = "Apellido 8",
+                            Apellidos = "Apellidos 8",
                             Dni = "76368633",
-                            Nombres = "Nombre 8"
+                            Nombres = "Nombres 8",
+                            Usuario_Id = "8"
                         },
                         new
                         {
                             Id = 9,
                             Activo = true,
-                            Apellidos = "Apellido 9",
+                            Apellidos = "Apellidos 9",
                             Dni = "76368634",
-                            Nombres = "Nombre 9"
+                            Nombres = "Nombres 9",
+                            Usuario_Id = "9"
                         },
                         new
                         {
                             Id = 10,
                             Activo = true,
-                            Apellidos = "Apellido 10",
+                            Apellidos = "Apellidos 10",
                             Dni = "76368635",
-                            Nombres = "Nombre 10"
+                            Nombres = "Nombres 10",
+                            Usuario_Id = "10"
                         });
                 });
 #pragma warning restore 612, 618

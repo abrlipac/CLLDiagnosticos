@@ -9,7 +9,11 @@ namespace Diagnosticos.Domain
 
         [JsonIgnore]
         public Diagnostico Diagnostico { get; set; }
+        public int Pregunta_Id { get; set; }
 
-        public string Sintoma { get; set; }
+        [JsonIgnore]
+        public Pregunta Pregunta { get; set; }
+
+        public string Respuesta { get; set; }
     }
 }

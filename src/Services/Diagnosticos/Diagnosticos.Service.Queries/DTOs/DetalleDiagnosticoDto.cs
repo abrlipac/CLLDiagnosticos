@@ -1,7 +1,11 @@
-﻿namespace Diagnosticos.Service.Queries.DTOs
+﻿using Diagnosticos.Domain;
+
+namespace Diagnosticos.Service.Queries.DTOs
 {
     public class DetalleDiagnosticoDto
     {
-        public string Sintoma { get; set; }
+        public int Id { get; set; }
+        public int Pregunta_Id { get; set; }
+        public string Respuesta { get; set; }
     }
 }

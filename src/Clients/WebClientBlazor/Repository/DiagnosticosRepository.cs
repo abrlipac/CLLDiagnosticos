@@ -9,8 +9,10 @@ namespace WebClientBlazor.Repository
         public HttpClient Client { get; set; }
         public DiagnosticosRepository()
         {
-            Client = new HttpClient();
-            Client.BaseAddress = new Uri("http://localhost:24141/diagnosticos");
+            Client = new HttpClient
+            {
+                BaseAddress = new Uri("http://localhost:24141/diagnosticos")
+            };
         }
         public HttpResponseMessage GetResponse(string url)
         {

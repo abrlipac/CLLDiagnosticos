@@ -35,9 +35,9 @@ namespace Identity.Service.Queries
             return collection.MapTo<DataCollection<UsuarioDto>>();
         }
 
-        public async Task<UsuarioDto> GetAsync(string id)
+        public async Task<UsuarioDto> GetAsync(string userName)
         {
-            return (await _context.Users.SingleAsync(x => x.Id == id)).MapTo<UsuarioDto>();
+            return (await _context.Users.SingleAsync(x => x.UserName == userName)).MapTo<UsuarioDto>();
         }
     }
 }

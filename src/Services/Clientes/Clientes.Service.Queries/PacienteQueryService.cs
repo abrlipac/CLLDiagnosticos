@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Service.Common.Collection;
 using Service.Common.Mapping;
 using Service.Common.Paging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Clientes.Service.Queries
 {
     public interface IPacienteQueryService
     {
-        Task<DataCollection<PacienteDto>> GetAllAsync(string dni, int page, int take, IEnumerable<int> pacientes = null);
+        Task<DataCollection<PacienteDto>> GetAllAsync(string dni, int page, int take, IEnumerable<int> ids = null);
         Task<PacienteDto> GetAsync(int id);
     }
 
@@ -26,11 +27,11 @@ namespace Clientes.Service.Queries
             _context = context;
         }
 
-        public async Task<DataCollection<PacienteDto>> GetAllAsync(string dni, int page, int take, IEnumerable<int> pacientes = null) 
+        public async Task<DataCollection<PacienteDto>> GetAllAsync(string dni, int page, int take, IEnumerable<int> ids = null) 
         {
             var collection = await _context.Pacientes
                 .Where(x => dni == null || x.Dni == dni)
-                .Where(x => pacientes == null || pacientes.Contains(x.Id))
+                .Where(x => ids == null || ids.Contains(x.Id))
                 .OrderByDescending(x => x.Id)
                 .GetPagedAsync(page, take);
 
@@ -43,7 +44,7 @@ namespace Clientes.Service.Queries
             {
                 return (await _context.Pacientes.SingleAsync(x => x.Id == id)).MapTo<PacienteDto>();
             }
-            catch (System.InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 return null;
             }

@@ -10,8 +10,10 @@ namespace WebClientBlazor.Repository
 
         public IdentityRepository()
         {
-            Client = new HttpClient();
-            Client.BaseAddress = new Uri("http://localhost:24141/identity");
+            Client = new HttpClient
+            {
+                BaseAddress = new Uri("http://localhost:24141/identity")
+            };
         }
         public HttpResponseMessage GetResponse(string url)
         {

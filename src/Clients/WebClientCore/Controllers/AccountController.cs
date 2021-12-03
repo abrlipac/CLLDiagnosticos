@@ -14,7 +14,7 @@ namespace WebClientCore.Controllers
 {
     public class AccountController : Controller
     {
-        private string _identityUrl = "http://localhost:10003/";
+        private readonly string _identityUrl = "http://localhost:10003/";
 
         [HttpGet]
         public IActionResult Login()
@@ -28,32 +28,30 @@ namespace WebClientCore.Controllers
             if (!ModelState.IsValid)
                 return View();
 
-            using (var client = new HttpClient())
+            using var client = new HttpClient();
+            var content = new StringContent(
+                JsonSerializer.Serialize(model.UsuarioLogin, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            var request = await client.PostAsync(_identityUrl + "identity/authentication", content);
+
+            if (!request.IsSuccessStatusCode)
             {
-                var content = new StringContent(
-                    JsonSerializer.Serialize(model.UsuarioLogin, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
-                    Encoding.UTF8,
-                    "application/json"
-                );
-
-                var request = await client.PostAsync(_identityUrl + "identity/authentication", content);
-
-                if (!request.IsSuccessStatusCode)
-                {
-                    model.HasInvalidAccess = true;
-                    return View(model);
-                }
-
-                var result = JsonSerializer.Deserialize<IdentityAccess>(
-                    await request.Content.ReadAsStringAsync(),
-                    new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    }
-                );
-
-                return Redirect(model.ReturnBaseUrl + $"connect?access_token={result.AccessToken}");
+                model.HasInvalidAccess = true;
+                return View(model);
             }
+
+            var result = JsonSerializer.Deserialize<IdentityAccess>(
+                await request.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            );
+
+            return Redirect(model.ReturnBaseUrl + $"connect?access_token={result.AccessToken}");
         }
 
         [HttpGet]
@@ -68,23 +66,21 @@ namespace WebClientCore.Controllers
             if (!ModelState.IsValid)
                 return View();
 
-            using (var client = new HttpClient())
+            using var client = new HttpClient();
+            var content = new StringContent(
+                JsonSerializer.Serialize(model, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            var request = await client.PostAsync(_identityUrl + "identity", content);
+
+            if (!request.IsSuccessStatusCode)
             {
-                var content = new StringContent(
-                    JsonSerializer.Serialize(model, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
-                    Encoding.UTF8,
-                    "application/json"
-                );
-
-                var request = await client.PostAsync(_identityUrl + "identity", content);
-
-                if (!request.IsSuccessStatusCode)
-                {
-                    return View(model);
-                }
-
-                return Redirect("login");
+                return View(model);
             }
+
+            return Redirect("login");
         }
 
         [HttpGet]

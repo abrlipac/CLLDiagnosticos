@@ -1,15 +1,15 @@
 ﻿using Clientes.Service.EventHandlers.Commands;
-using Clientes.Service.Queries.DTOs;
 using Clientes.Service.Queries;
+using Clientes.Service.Queries.DTOs;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Common.Collection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Clientes.Api.Controllers
 {

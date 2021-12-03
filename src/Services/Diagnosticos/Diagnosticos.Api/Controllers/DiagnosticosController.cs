@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Diagnosticos.Service.EventHandlers.Exceptions;
 using Diagnosticos.Service.Queries.Exceptions;
+using System;
 
 namespace Diagnosticos.Api.Controllers
 {
@@ -29,9 +30,9 @@ namespace Diagnosticos.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<DataCollection<DiagnosticoDto>> GetAll(int page = 1, int take = 10) 
+        public async Task<DataCollection<DiagnosticoDto>> GetAll(int? paciente, int page = 1, int take = 10) 
         {
-            return await _diagnosticoQueryService.GetAllAsync(page, take);
+            return await _diagnosticoQueryService.GetAllAsync(paciente, page, take);
         }
 
         [HttpGet("{id}")]
@@ -42,6 +43,10 @@ namespace Diagnosticos.Api.Controllers
                 return await _diagnosticoQueryService.GetAsync(id);
             }
             catch (DiagnosticosGetDiagnosticoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -56,6 +61,10 @@ namespace Diagnosticos.Api.Controllers
                 return Ok();
             }
             catch (DiagnosticosDiagnosticoCreateCommandException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

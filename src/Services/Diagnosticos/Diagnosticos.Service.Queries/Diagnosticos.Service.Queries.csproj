@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\..\..\.sonarlint\diagnostico\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Common\Services.Common.Mapping\Services.Common.Mapping.csproj" />
     <ProjectReference Include="..\..\Common\Services.Common.Paging\Services.Common.Paging.csproj" />
     <ProjectReference Include="..\Diagnosticos.Persistence.Database\Diagnosticos.Persistence.Database.csproj" />

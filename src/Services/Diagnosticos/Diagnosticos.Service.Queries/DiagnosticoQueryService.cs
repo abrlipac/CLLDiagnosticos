@@ -13,7 +13,7 @@ namespace Diagnosticos.Service.Queries
 {
     public interface IDiagnosticoQueryService
     {
-        Task<DataCollection<DiagnosticoDto>> GetAllAsync(int page, int take);
+        Task<DataCollection<DiagnosticoDto>> GetAllAsync(int? paciente_Id, int page, int take);
         Task<DiagnosticoDto> GetAsync(int id);
     }
 
@@ -27,10 +27,12 @@ namespace Diagnosticos.Service.Queries
             _context = context;
         }
 
-        public async Task<DataCollection<DiagnosticoDto>> GetAllAsync(int page, int take) 
+        public async Task<DataCollection<DiagnosticoDto>> GetAllAsync(int? pacienteId, int page, int take) 
         {
             var collection = await _context.Diagnosticos
                 .Include(x => x.DetallesDiagnostico)
+                .Include(x => x.PosiblesEnfermedades)
+                .Where(x => pacienteId == null || x.Paciente_Id == pacienteId)
                 .OrderByDescending(x => x.Id)
                 .GetPagedAsync(page, take);
 
@@ -39,7 +41,9 @@ namespace Diagnosticos.Service.Queries
 
         public async Task<DiagnosticoDto> GetAsync(int id)
         {
-            var diagnosticos = _context.Diagnosticos.Include(x => x.DetallesDiagnostico);
+            var diagnosticos = _context.Diagnosticos
+                .Include(x => x.DetallesDiagnostico)
+                .Include(x => x.PosiblesEnfermedades);
 
             try
             {

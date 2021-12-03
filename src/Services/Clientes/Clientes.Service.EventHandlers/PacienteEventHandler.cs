@@ -23,10 +23,13 @@ namespace Clientes.Service.EventHandlers
         public async Task Handle(PacienteCreateCommand notification, CancellationToken cancellationToken)
         {
             await _context.AddAsync(new Paciente {
+                Usuario_Id = notification.Usuario_Id,
                 Dni = notification.Dni,
                 Nombres = notification.Nombres,
                 Apellidos = notification.Apellidos,
                 Sexo = notification.Sexo,
+                FechaNacimiento = notification.FechaNacimiento,
+                Region = notification.Region,
                 Email = notification.Email,
                 Celular = notification.Celular,
                 Activo = notification.Activo
@@ -46,10 +49,13 @@ namespace Clientes.Service.EventHandlers
             var updatedPaciente = new Paciente
             {
                 Id = originalPaciente.Id,
+                Usuario_Id = originalPaciente.Usuario_Id,
                 Dni = originalPaciente.Dni,
                 Nombres = originalPaciente.Nombres,
                 Apellidos = originalPaciente.Apellidos,
                 Sexo = originalPaciente.Sexo,
+                FechaNacimiento = originalPaciente.FechaNacimiento,
+                Region = originalPaciente.Region,
                 Email = notification.Email,
                 Celular = notification.Celular,
                 Activo = originalPaciente.Activo

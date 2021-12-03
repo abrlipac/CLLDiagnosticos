@@ -7,10 +7,8 @@ namespace Identity.Persistence.Database
 {
     public class ApplicationDbContext : IdentityDbContext<Usuario, Rol, string>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -25,6 +23,7 @@ namespace Identity.Persistence.Database
         {
             UsuarioConfiguration.Configure(modelBuilder.Entity<Usuario>());
             RolConfiguration.Configure(modelBuilder.Entity<Rol>());
+            RolUsuarioConfiguration.Configure(modelBuilder.Entity<RolUsuario>());
         }
     }
 }

@@ -9,20 +9,20 @@ namespace Identity.Api.Controllers
     [Route("identity")]
     public class IdentityController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IMediator Mediator;
 
         public IdentityController(
             IMediator mediator)
         {
-            _mediator = mediator;
+            Mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(UsuarioCreateCommand command) 
+        public async Task<IActionResult> SignUp(UsuarioCreateCommand command) 
         {
             if (ModelState.IsValid) 
             {
-                var result = await _mediator.Send(command);
+                var result = await Mediator.Send(command);
 
                 if (!result.Succeeded) 
                 {
@@ -35,16 +35,16 @@ namespace Identity.Api.Controllers
             return BadRequest();
         }
 
-        [HttpPost("authentication")]
-        public async Task<IActionResult> Authentication(UsuarioLoginCommand command)
+        [HttpPost("auth")]
+        public async Task<IActionResult> SignIn(UsuarioLoginCommand command)
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.Send(command);
+                var result = await Mediator.Send(command);
 
                 if (!result.Succeeded)
                 {
-                    return BadRequest("Access denied");
+                    return BadRequest("Acceso denegado");
                 }
 
                 return Ok(result);

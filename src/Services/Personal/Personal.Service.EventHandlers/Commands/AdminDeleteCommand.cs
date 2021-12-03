@@ -2,9 +2,8 @@
 
 namespace Personal.Service.EventHandlers.Commands
 {
-    public class EmpleadoUpdateActivoCommand : INotification
+    public class AdminDeleteCommand : INotification
     {
         public int Id { get; set; }
-        public bool Activo { get; set; }
     }
 }

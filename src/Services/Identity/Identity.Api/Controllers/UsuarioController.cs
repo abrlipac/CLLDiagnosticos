@@ -14,25 +14,25 @@ namespace Identity.Api.Controllers
     [Route("usuarios")]
     public class UsuarioController : ControllerBase
     {
-        private readonly IUsuarioQueryService _usuarioQueryService;
+        private readonly IUsuarioQueryService UsuarioQueryService;
 
         public UsuarioController(
             IUsuarioQueryService usuarioQueryService)
         {
-            _usuarioQueryService = usuarioQueryService;
+            UsuarioQueryService = usuarioQueryService;
         }
 
         [HttpGet]
         public async Task<DataCollection<UsuarioDto>> GetAll(int page = 1, int take = 10, string ids = null)
         {
             IEnumerable<string> users = ids?.Split(',');
-            return await _usuarioQueryService.GetAllAsync(page, take, users);
+            return await UsuarioQueryService.GetAllAsync(page, take, users);
         }
 
-        [HttpGet("{id}")]
-        public async Task<UsuarioDto> Get(string id)
+        [HttpGet("{username}")]
+        public async Task<UsuarioDto> Get(string username)
         {
-            return await _usuarioQueryService.GetAsync(id);
+            return await UsuarioQueryService.GetAsync(username);
         }
     }
 }

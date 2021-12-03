@@ -47,7 +47,7 @@ namespace Personal.Api
 
             services.AddMediatR(Assembly.Load("Personal.Service.EventHandlers"));
 
-            services.AddTransient<IEmpleadoQueryService, EmpleadoQueryService>();
+            services.AddTransient<IAdminQueryService, AdminQueryService>();
 
             services.AddControllers();
 

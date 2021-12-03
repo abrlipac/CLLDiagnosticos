@@ -21,26 +21,26 @@ namespace Identity.Service.EventHandlers
     public class UsuarioLoginEventHandler :
         IRequestHandler<UsuarioLoginCommand, IdentityAccess>
     {
-        private readonly SignInManager<Usuario> _signInManager;
-        private readonly ApplicationDbContext _context;
-        private readonly IConfiguration _configuration;
+        private readonly SignInManager<Usuario> SignInManager;
+        private readonly ApplicationDbContext Context;
+        private readonly IConfiguration Configuration;
 
         public UsuarioLoginEventHandler(
             SignInManager<Usuario> signInManager,
             ApplicationDbContext context,
             IConfiguration configuration)
         {
-            _signInManager = signInManager;
-            _context = context;
-            _configuration = configuration;
+            SignInManager = signInManager;
+            Context = context;
+            Configuration = configuration;
         }
 
         public async Task<IdentityAccess> Handle(UsuarioLoginCommand request, CancellationToken cancellationToken)
         {
             var result = new IdentityAccess();
 
-            var user = await _context.Users.SingleAsync(x => x.UserName == request.UserName);
-            var response = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+            var user = await Context.Users.SingleAsync(x => x.UserName == request.UserName);
+            var response = await SignInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             if (response.Succeeded)
             {
@@ -53,7 +53,7 @@ namespace Identity.Service.EventHandlers
 
         private async Task GenerateToken(Usuario user, IdentityAccess identity)
         {
-            var secretKey = _configuration.GetSection("SecretKey").Value;
+            var secretKey = Configuration.GetSection("SecretKey").Value;
             var key = Encoding.ASCII.GetBytes(secretKey);
 
             var claims = new List<Claim>
@@ -62,7 +62,7 @@ namespace Identity.Service.EventHandlers
                 new Claim(ClaimTypes.Name, user.NombreCompleto),
             };
 
-            var roles = await _context.Roles
+            var roles = await Context.Roles
                 .Where(x => x.RolesUsuario.Any(y => y.UserId == user.Id))
                 .ToListAsync();
 
@@ -76,7 +76,7 @@ namespace Identity.Service.EventHandlers
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature

@@ -23,11 +23,11 @@ namespace Personal.Persistence.Database
             ModelConfig(modelBuilder);
         }
 
-        public DbSet<Empleado> Empleados { get; set; }
+        public DbSet<Admin> Administradores { get; set; }
 
         private void ModelConfig(ModelBuilder modelBuilder)
         {
-            EmpleadoConfiguration.Configure(modelBuilder.Entity<Empleado>());
+            AdminConfiguration.Configure(modelBuilder.Entity<Admin>());
         }
     }
 }
