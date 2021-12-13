@@ -15,6 +15,8 @@ namespace Diagnosticos.Service.Queries
     {
         Task<DataCollection<DiagnosticoDto>> GetAllAsync(int? paciente_Id, int page, int take);
         Task<DiagnosticoDto> GetAsync(int id);
+        Task<DataCollection<EspecialidadDto>> GetAllEspecialidadesAsync(int page, int take);
+        Task<DataCollection<PreguntaDto>> GetAllPreguntasAsync(int? espId, int page, int take);
     }
 
     public class DiagnosticoQueryService : IDiagnosticoQueryService
@@ -37,6 +39,26 @@ namespace Diagnosticos.Service.Queries
                 .GetPagedAsync(page, take);
 
             return collection.MapTo<DataCollection<DiagnosticoDto>>();
+        }
+
+        public async Task<DataCollection<EspecialidadDto>> GetAllEspecialidadesAsync(int page, int take)
+        {
+            var collection = await _context.Especialidades
+                .OrderByDescending(x => x.Id)
+                .GetPagedAsync(page, take);
+
+            return collection.MapTo<DataCollection<EspecialidadDto>>();
+        }
+
+        public async Task<DataCollection<PreguntaDto>> GetAllPreguntasAsync(int? espId, int page, int take)
+        {
+            var collection = await _context.Preguntas
+                .Include(x => x.Opciones)
+                .Where(x => espId == null || x.Especialidad_Id == espId)
+                .OrderByDescending(x => x.Id)
+                .GetPagedAsync(page, take);
+
+            return collection.MapTo<DataCollection<PreguntaDto>>();
         }
 
         public async Task<DiagnosticoDto> GetAsync(int id)

@@ -29,6 +29,7 @@ namespace Identity.Api.Controllers
             return await UsuarioQueryService.GetAllAsync(page, take, users);
         }
 
+        [AllowAnonymous]
         [HttpGet("{username}")]
         public async Task<UsuarioDto> Get(string username)
         {

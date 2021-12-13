@@ -1,20 +1,25 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Api.Gateway.Models.Clientes.Commands;
+using Api.Gateway.Models.Identity.Commands;
+using Api.Gateway.Models.Identity.DTOs;
+using Api.Gateway.Models.Identity.Responses;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Security.Claims;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using WebClientCore.Models;
+using WebClientCore.Resources;
+using WebClientCore.Service;
 
 namespace WebClientCore.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly string _identityUrl = "http://localhost:10003/";
+        private readonly string BaseUrl = ApiUrls.BaseUrl;
 
         [HttpGet]
         public IActionResult Login()
@@ -25,33 +30,21 @@ namespace WebClientCore.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
+            var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer());
+            var webClientApi = RestService.For<IWebClientService>(BaseUrl, refitSettings);
+
             if (!ModelState.IsValid)
                 return View();
 
-            using var client = new HttpClient();
-            var content = new StringContent(
-                JsonSerializer.Serialize(model.UsuarioLogin, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
-                Encoding.UTF8,
-                "application/json"
-            );
+            ApiResponse<IdentityAccess> response = await webClientApi.Login(model.UsuarioLogin);
 
-            var request = await client.PostAsync(_identityUrl + "identity/authentication", content);
-
-            if (!request.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
                 model.HasInvalidAccess = true;
                 return View(model);
             }
 
-            var result = JsonSerializer.Deserialize<IdentityAccess>(
-                await request.Content.ReadAsStringAsync(),
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                }
-            );
-
-            return Redirect(model.ReturnBaseUrl + $"connect?access_token={result.AccessToken}");
+            return Redirect(model.ReturnBaseUrl + $"connect?access_token={response.Content.AccessToken}");
         }
 
         [HttpGet]
@@ -61,33 +54,82 @@ namespace WebClientCore.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Signup(UsuarioCreate model)
+        public async Task<ActionResult> Signup(SignupViewModel signup)
         {
+            var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer());
+            var webClientApi = RestService.For<IWebClientService>(BaseUrl, refitSettings);
+
             if (!ModelState.IsValid)
-                return View();
-
-            using var client = new HttpClient();
-            var content = new StringContent(
-                JsonSerializer.Serialize(model, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }),
-                Encoding.UTF8,
-                "application/json"
-            );
-
-            var request = await client.PostAsync(_identityUrl + "identity", content);
-
-            if (!request.IsSuccessStatusCode)
             {
-                return View(model);
+                ViewData["error"] = "Compruebe los datos ingresados";
+                return View(signup);
             }
 
-            return Redirect("login");
+            if (signup.Password != signup.RepetirPassword)
+            {
+                ViewData["error"] = "Las contraseñas no coinciden";
+                return View(signup);
+            }
+
+            var usuarioCreate = new UsuarioCreateCommand
+            {
+                NombreCompleto = $"{signup.PacienteCreate.Nombres} {signup.PacienteCreate.Apellidos}",
+                Password = signup.Password,
+                UserName = signup.UserName
+            };
+
+            await webClientApi.Signup(usuarioCreate);
+
+            /*
+            if(!usuarioResponse.IsSuccessStatusCode)
+            {
+                ViewData["error"] = "No se pudo registrar al usuario";
+                return View(signup);
+            }*/
+
+            ApiResponse<UsuarioDto> getUsuarioResponse = await webClientApi.GetUser(signup.UserName);
+
+            if (!getUsuarioResponse.IsSuccessStatusCode)
+            {
+                ViewData["error"] = "No se pudo encontrar al usuario creado";
+                return View(signup);
+            }
+
+            var userId = getUsuarioResponse.Content.Id;
+
+            var pacienteCreate = new PacienteCreateCommand
+            {
+                Activo = true,
+                Apellidos = signup.PacienteCreate.Apellidos,
+                Nombres = signup.PacienteCreate.Nombres,
+                Dni = signup.PacienteCreate.Dni,
+                Celular = signup.PacienteCreate.Celular,
+                Email = signup.PacienteCreate.Email,
+                FechaNacimiento = signup.PacienteCreate.FechaNacimiento,
+                Region = signup.PacienteCreate.Region,
+                Sexo = signup.PacienteCreate.Sexo,
+                Usuario_Id = userId
+            };
+
+            await webClientApi.CreatePaciente(pacienteCreate);
+
+            /*
+            if (!pacienteResponse.IsSuccessStatusCode)
+            {
+                ViewData["error"] = "No se pudo registrar al paciente";
+                return View(signup);
+            }*/
+
+            return Redirect("~/account/login");
         }
 
         [HttpGet]
         public async Task<ActionResult> Connect(string access_token)
         {
             var token = access_token.Split('.');
-            var base64Content = Convert.FromBase64String(token[1]);
+            var paddedContent = token[1].PadRight(token[1].Length + (token[1].Length * 3) % 4, '=');
+
+            var base64Content = Convert.FromBase64String(paddedContent);
 
             var user = JsonSerializer.Deserialize<AccessTokenUserInformation>(base64Content);
 
@@ -95,6 +137,7 @@ namespace WebClientCore.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.nameid),
                 new Claim(ClaimTypes.Name, user.unique_name),
+                new Claim(ClaimTypes.Role, user.role),
                 new Claim("access_token", access_token)
             };
 
@@ -118,7 +161,7 @@ namespace WebClientCore.Controllers
         public async Task<ActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return Redirect("~/");
+            return Redirect("~/account/login");
         }
     }
 }

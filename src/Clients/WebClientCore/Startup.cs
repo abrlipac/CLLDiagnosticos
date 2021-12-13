@@ -1,5 +1,3 @@
-using Api.Gateway.WebClient.Proxy;
-using Api.Gateway.WebClient.Proxy.Config;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,17 +19,8 @@ namespace WebClientCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(new ApiGatewayUrl(Configuration.GetValue<string>("ApiGatewayUrl")));
             services.AddHttpContextAccessor();
-
-            services.AddHttpClient<IClientesProxy, ClientesProxy>();
-            services.AddHttpClient<IDiagnosticosProxy, DiagnosticosProxy>();
-            services.AddHttpClient<IIdentityProxy, IdentityProxy>();
-            services.AddHttpClient<IPersonalProxy, PersonalProxy>();
-            services.AddHttpClient<IUsuarioProxy, UsuarioProxy>();
-
             services.AddControllersWithViews();
-
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
         }

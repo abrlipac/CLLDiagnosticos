@@ -1,4 +1,5 @@
 ﻿using Api.Gateway.Models.Clientes.Common;
+using System;
 
 namespace Api.Gateway.Models.Clientes.DTOs
 {
@@ -9,6 +10,8 @@ namespace Api.Gateway.Models.Clientes.DTOs
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public Sexo Sexo { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public string Region { get; set; }
         public string Email { get; set; }
         public string Celular { get; set; }
         public bool Activo { get; set; }

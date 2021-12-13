@@ -42,10 +42,15 @@ namespace Identity.Service.EventHandlers
             var user = await Context.Users.SingleAsync(x => x.UserName == request.UserName);
             var response = await SignInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
+            result.Succeeded = response.Succeeded;
+
             if (response.Succeeded)
             {
-                result.Succeeded = true;
                 await GenerateToken(user, result);
+            }
+            else
+            {
+                result.AccessToken = "";
             }
 
             return result;
@@ -59,7 +64,7 @@ namespace Identity.Service.EventHandlers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Name, user.NombreCompleto),
+                new Claim(ClaimTypes.Name, user.NombreCompleto)
             };
 
             var roles = await Context.Roles

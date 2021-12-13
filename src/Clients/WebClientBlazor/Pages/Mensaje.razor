@@ -1,12 +1,12 @@
-﻿<div class="container d-flex flex-row @(!mensaje.EsPregunta ? "justify-content-end" : "")">
+﻿<div class="container mb-3 d-flex flex-row @(!mensaje.EsPregunta ? "justify-content-end" : "")">
     @if (mensaje.EsPregunta)
     {
-        <div class="chatbot__boticon rounded-circle pr-2">
-            <img src="img/bot.svg" class="w-100 h-100" />
-        </div>
+    <div class="chatbot__boticon rounded-circle pr-2">
+        <img src="../../img/bot.svg" class="w-100 h-100" />
+    </div>
     }
     <div>
-        <div class="chatbot__message btn">
+        <div class="chatbot__message btn text-wrap">
             @mensaje.Contenido
         </div>
         @if (mensaje.Opciones != null)

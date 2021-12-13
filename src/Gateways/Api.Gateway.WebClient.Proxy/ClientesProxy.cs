@@ -13,7 +13,7 @@ namespace Api.Gateway.WebClient.Proxy
 {
     public interface IClientesProxy
     {
-        Task<DataCollection<PacienteDto>> GetAllAsync(int page, int take, IEnumerable<int> pacientes = null);
+        Task<DataCollection<PacienteDto>> GetAllAsync(string dni, string usuarioId, int page, int take, IEnumerable<int> pacientes = null);
         Task<PacienteDto> GetAsync(int id);
         Task CreateAsync(PacienteCreateCommand command);
         Task UpdateContactInfoAsync(PacienteUpdateContactInfoCommand command);
@@ -35,11 +35,11 @@ namespace Api.Gateway.WebClient.Proxy
             _apiGatewayUrl = apiGatewayUrl.Value;
         }
 
-        public async Task<DataCollection<PacienteDto>> GetAllAsync(int page, int take, IEnumerable<int> pacientes = null)
+        public async Task<DataCollection<PacienteDto>> GetAllAsync(string dni, string usuarioId, int page, int take, IEnumerable<int> pacientes = null)
         {
             var ids = string.Join(',', pacientes ?? new List<int>());
 
-            var request = await _httpClient.GetAsync($"{_apiGatewayUrl}pacientes?page={page}&take={take}&ids={ids}");
+            var request = await _httpClient.GetAsync($"{_apiGatewayUrl}pacientes?dni={dni}&usuarioId={usuarioId}&page={page}&take={take}&ids={ids}");
             request.EnsureSuccessStatusCode();
 
             return JsonSerializer.Deserialize<DataCollection<PacienteDto>>(

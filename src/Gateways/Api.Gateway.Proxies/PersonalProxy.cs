@@ -13,11 +13,11 @@ namespace Api.Gateway.Proxies
 {
     public interface IPersonalProxy
     {
-        Task<DataCollection<EmpleadoDto>> GetAllAsync(int page, int take, string dni);
-        Task<EmpleadoDto> GetAsync(int id);
-        Task CreateAsync(EmpleadoCreateCommand command);
-        Task UpdateActivoAsync(EmpleadoUpdateActivoCommand command);
-        Task DeleteAsync(EmpleadoDeleteCommand command);
+        Task<DataCollection<AdminDto>> GetAllAsync(int page, int take, string dni);
+        Task<AdminDto> GetAsync(int id);
+        Task CreateAsync(AdminCreateCommand command);
+        Task UpdateActivoAsync(AdminUpdateActivoCommand command);
+        Task DeleteAsync(AdminDeleteCommand command);
     }
     public class PersonalProxy : IPersonalProxy
     {
@@ -35,12 +35,12 @@ namespace Api.Gateway.Proxies
             _apiUrls = apiUrls.Value;
         }
 
-        public async Task<DataCollection<EmpleadoDto>> GetAllAsync(int page, int take, string dni)
+        public async Task<DataCollection<AdminDto>> GetAllAsync(int page, int take, string dni)
         {
-            var request = await _httpClient.GetAsync($"{_apiUrls.PersonalUrl}empleados?dni={dni}&page={page}&take={take}");
+            var request = await _httpClient.GetAsync($"{_apiUrls.PersonalUrl}admins?dni={dni}&page={page}&take={take}");
             request.EnsureSuccessStatusCode();
 
-            return JsonSerializer.Deserialize<DataCollection<EmpleadoDto>>(
+            return JsonSerializer.Deserialize<DataCollection<AdminDto>>(
                 await request.Content.ReadAsStringAsync(),
                 new JsonSerializerOptions
                 {
@@ -49,12 +49,12 @@ namespace Api.Gateway.Proxies
             );
         }
 
-        public async Task<EmpleadoDto> GetAsync(int id)
+        public async Task<AdminDto> GetAsync(int id)
         {
-            var request = await _httpClient.GetAsync($"{_apiUrls.PersonalUrl}empleados/{id}");
+            var request = await _httpClient.GetAsync($"{_apiUrls.PersonalUrl}admins/{id}");
             request.EnsureSuccessStatusCode();
 
-            return JsonSerializer.Deserialize<EmpleadoDto>(
+            return JsonSerializer.Deserialize<AdminDto>(
                 await request.Content.ReadAsStringAsync(),
                 new JsonSerializerOptions
                 {
@@ -63,7 +63,7 @@ namespace Api.Gateway.Proxies
             );
         }
 
-        public async Task CreateAsync(EmpleadoCreateCommand command)
+        public async Task CreateAsync(AdminCreateCommand command)
         {
             var content = new StringContent(
                 JsonSerializer.Serialize(command),
@@ -71,11 +71,11 @@ namespace Api.Gateway.Proxies
                 "application/json"
             );
 
-            var request = await _httpClient.PostAsync($"{_apiUrls.PersonalUrl}empleados", content);
+            var request = await _httpClient.PostAsync($"{_apiUrls.PersonalUrl}admins", content);
             request.EnsureSuccessStatusCode();
         }
 
-        public async Task UpdateActivoAsync(EmpleadoUpdateActivoCommand command)
+        public async Task UpdateActivoAsync(AdminUpdateActivoCommand command)
         {
             var content = new StringContent(
                 JsonSerializer.Serialize(command),
@@ -83,13 +83,13 @@ namespace Api.Gateway.Proxies
                 "application/json"
             );
 
-            var request = await _httpClient.PatchAsync($"{_apiUrls.PersonalUrl}empleados", content);
+            var request = await _httpClient.PatchAsync($"{_apiUrls.PersonalUrl}admins", content);
             request.EnsureSuccessStatusCode();
         }
 
-        public async Task DeleteAsync(EmpleadoDeleteCommand command)
+        public async Task DeleteAsync(AdminDeleteCommand command)
         {
-            var request = await _httpClient.DeleteAsync($"{_apiUrls.PersonalUrl}empleados/{command.Id}");
+            var request = await _httpClient.DeleteAsync($"{_apiUrls.PersonalUrl}admins/{command.Id}");
             request.EnsureSuccessStatusCode();
         }
     }

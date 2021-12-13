@@ -7,19 +7,30 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Refit" Version="6.1.15" />
+    <PackageReference Include="Refit.Newtonsoft.Json" Version="6.1.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\ApiUrls.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiUrls.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ApiUrls.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApiUrls.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>WebClientCore.Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Api.Gateway.Models">
       <HintPath>Proxies\Api.Gateway.Models.dll</HintPath>
     </Reference>
-    <Reference Include="Api.Gateway.WebClient.Proxy">
-      <HintPath>Proxies\Api.Gateway.WebClient.Proxy.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Personal\" />
   </ItemGroup>
 
 </Project>

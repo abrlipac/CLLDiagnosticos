@@ -1,6 +1,0 @@
-﻿.form-control:focus + .form-label {
-    color: var(--primary-color);
-}
-.submit-btn {
-    background-color: var(--primary-color);
-}

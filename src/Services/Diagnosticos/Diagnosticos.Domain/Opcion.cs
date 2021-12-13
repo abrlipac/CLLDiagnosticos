@@ -9,6 +9,5 @@ namespace Diagnosticos.Domain
         [JsonIgnore]
         public Pregunta Pregunta { get; set; }
         public string Valor { get; set; }
-
     }
 }

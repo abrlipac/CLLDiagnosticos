@@ -1,0 +1,75 @@
+﻿@model DataCollection<AdminDto>
+
+@{
+    ViewData["Title"] = "Administradores";
+}
+
+<h1>Administradores</h1>
+
+<p>
+    <a asp-action="Agregar" class="btn btn-success">Agregar nuevo</a>
+</p>
+
+@if (Model.HasItems)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dni</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Está activo?</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activo)
+                    </td>
+                    <td>
+                        <a href="~/admins/visualizar/@item.Id" class="btn btn-outline-primary">Ver</a>
+                        <a href="~/admins/eliminar/@item.Id" class="btn btn-outline-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <form asp-action="Index">
+        <div class="input-group mb-3 d-inline-flex">
+            <span class="input-group-text" id="cantidad">Ver </span>
+            <input type="text" class="form-control" placeholder="10" aria-label="Cantidad" aria-describedby="cantidad">
+            <span class="input-group-text" id="cantidad">administradores</span>
+        </div>
+    </form>
+
+    <nav aria-label="paginación">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(Model.Page - 1 < 0 ? "disabled" : "")">
+                <a class="page-link" href="~/admins?page=@(Model.Page - 1)" tabindex="-1" aria-disabled="@(Model.Page - 1 < 0 ? "true" : "false")">Anterior</a>
+            </li>
+
+            <li class="page-item"><a class="page-link" href="#">@Model.Page</a></li>
+
+            <li class="page-item @(Model.Page + 1 > Model.Pages ? "disabled" : "")">
+                <a class="page-link" href="~/admins?page=@(Model.Page + 1)" tabindex="-1" aria-disabled="@(Model.Page + 1 > Model.Pages ? "true" : "false")">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
+}

@@ -13,7 +13,7 @@ namespace Identity.Service.Queries
     public interface IUsuarioQueryService
     {
         Task<DataCollection<UsuarioDto>> GetAllAsync(int page, int take, IEnumerable<string> users = null);
-        Task<UsuarioDto> GetAsync(string id);
+        Task<UsuarioDto> GetAsync(string userName);
     }
     public class UsuarioQueryService : IUsuarioQueryService
     {

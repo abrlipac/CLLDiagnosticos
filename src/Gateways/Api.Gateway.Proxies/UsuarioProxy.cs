@@ -12,7 +12,7 @@ namespace Api.Gateway.Proxies
     public interface IUsuarioProxy
     {
         Task<DataCollection<UsuarioDto>> GetAllAsync(int page, int take);
-        Task<UsuarioDto> GetAsync(int id);
+        Task<UsuarioDto> GetAsync(string username);
     }
     public class UsuarioProxy : IUsuarioProxy
     {
@@ -44,9 +44,9 @@ namespace Api.Gateway.Proxies
             );
         }
 
-        public async Task<UsuarioDto> GetAsync(int id)
+        public async Task<UsuarioDto> GetAsync(string username)
         {
-            var request = await _httpClient.GetAsync($"{_apiUrls.IdentityUrl}usuarios/{id}");
+            var request = await _httpClient.GetAsync($"{_apiUrls.IdentityUrl}usuarios/{username}");
             request.EnsureSuccessStatusCode();
 
             return JsonSerializer.Deserialize<UsuarioDto>(

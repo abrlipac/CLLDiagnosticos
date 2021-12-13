@@ -13,7 +13,7 @@ namespace Clientes.Service.Queries
 {
     public interface IPacienteQueryService
     {
-        Task<DataCollection<PacienteDto>> GetAllAsync(string dni, int page, int take, IEnumerable<int> ids = null);
+        Task<DataCollection<PacienteDto>> GetAllAsync(string dni, string usuarioId, int page, int take, IEnumerable<int> ids = null);
         Task<PacienteDto> GetAsync(int id);
     }
 
@@ -27,10 +27,11 @@ namespace Clientes.Service.Queries
             _context = context;
         }
 
-        public async Task<DataCollection<PacienteDto>> GetAllAsync(string dni, int page, int take, IEnumerable<int> ids = null) 
+        public async Task<DataCollection<PacienteDto>> GetAllAsync(string dni, string usuarioId, int page, int take, IEnumerable<int> ids = null) 
         {
             var collection = await _context.Pacientes
                 .Where(x => dni == null || x.Dni == dni)
+                .Where(x => usuarioId == null || x.Usuario_Id == usuarioId)
                 .Where(x => ids == null || ids.Contains(x.Id))
                 .OrderByDescending(x => x.Id)
                 .GetPagedAsync(page, take);

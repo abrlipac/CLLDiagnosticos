@@ -17,7 +17,7 @@ namespace Diagnosticos.Persistence.Database.Configuration
 
             var opciones = new List<Opcion>();
 
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 21; i++)
             {
                 opciones.Add(new Opcion
                 {

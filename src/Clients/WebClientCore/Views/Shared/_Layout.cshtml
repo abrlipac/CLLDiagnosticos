@@ -6,18 +6,119 @@
     <title>@ViewData["Title"] - CLLDiagnosticos</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" href="~/favicon.ico" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" href="https://clinicalaluz.pe/">
-                    <img src="~/img/logo.png" class="brand-logo" />
+    @{
+        Layout = null;
+
+        string controller = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+        string action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+        var isAnonymousAllowed = controller.Equals("account") &&
+            (action.Equals("login") || action.Equals("signup"));
+
+        string username = "", token = "";
+        bool esPaciente = false, esAdmin = false;
+
+        if (User.Identity.IsAuthenticated)
+        {
+            username = User.Identity.Name;
+            esPaciente = User.IsInRole("Paciente");
+            esAdmin = User.IsInRole("Admin");
+
+            token = User.Claims
+                .ToList()
+                .Where(x => x.Type.Equals("access_token"))
+                .SingleOrDefault()
+                .Value;
+        }
+    }
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="~/img/logo1.png" height="60" />
+                    CLL Diagnósticos
                 </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    @if (!isAnonymousAllowed)
+                    {
+                        @if (esAdmin)
+                        {
+                            <ul class="navbar-nav mb-0 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Administradores
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="~/admins/agregar">Crear nuevo</a></li>
+                                        <li><a class="dropdown-item" href="~/admins">Listar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Reportes
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="~/reportes/reporte">Reporte general</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                        @if (esPaciente)
+                        {
+                            var generarUrl = $"http://localhost:10011/api/account/connect?access_token=" + token;
+
+                            <ul class="navbar-nav mb-0 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Diagnosticos
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="@generarUrl">Generar diagnostico</a></li>
+                                        <li><a class="dropdown-item" href="~/diagnosticos">Listar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Reportes
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="~/reportes/reporte">Reporte personalizado</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                        <ul class="navbar-nav me-0 mb-0 mb-lg-0">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/img/user.png" width="40" />
+                                    <b>Bievenido </b>@username<span class="caret"></span>
+
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="~/account/perfil">Perfil de usuario</a></li>
+                                    <li><a class="dropdown-item" href="~/account/logout">Cerrar sesión</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    }
+                </div>
             </div>
         </nav>
-    </header>
-    <div class="container">
+    </div>
+
+    <div class="main container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

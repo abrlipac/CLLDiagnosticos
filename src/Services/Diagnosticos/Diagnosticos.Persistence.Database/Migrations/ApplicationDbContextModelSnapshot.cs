@@ -472,6 +472,18 @@ namespace Diagnosticos.Persistence.Database.Migrations
                             Id = 40,
                             Pregunta_Id = 20,
                             Valor = "No"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Pregunta_Id = 21,
+                            Valor = "Sí"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Pregunta_Id = 21,
+                            Valor = "No"
                         });
                 });
 

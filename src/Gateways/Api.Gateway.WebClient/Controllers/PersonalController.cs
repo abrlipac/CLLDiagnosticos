@@ -11,7 +11,7 @@ namespace Api.Gateway.WebClient
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
-    [Route("empleados")]
+    [Route("admins")]
     public class PersonalController : ControllerBase
     {
         private readonly IPersonalProxy _personalProxy;
@@ -24,33 +24,33 @@ namespace Api.Gateway.WebClient
         }
 
         [HttpGet]
-        public async Task<DataCollection<EmpleadoDto>> GetAll(int page = 1, int take = 10, string dni = null)
+        public async Task<DataCollection<AdminDto>> GetAll(int page = 1, int take = 10, string dni = null)
         {
             return await _personalProxy.GetAllAsync(page, take, dni);
         }
 
         [HttpGet("{id}")]
-        public async Task<EmpleadoDto> Get(int id)
+        public async Task<AdminDto> Get(int id)
         {
             return await _personalProxy.GetAsync(id);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(EmpleadoCreateCommand notification)
+        public async Task<IActionResult> Create(AdminCreateCommand notification)
         {
             await _personalProxy.CreateAsync(notification);
             return Ok();
         }
 
         [HttpPatch]
-        public async Task<IActionResult> UpdateActivo(EmpleadoUpdateActivoCommand notification)
+        public async Task<IActionResult> UpdateActivo(AdminUpdateActivoCommand notification)
         {
             await _personalProxy.UpdateActivoAsync(notification);
             return Ok();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(EmpleadoDeleteCommand notification)
+        public async Task<IActionResult> Delete(AdminDeleteCommand notification)
         {
             await _personalProxy.DeleteAsync(notification);
             return Ok();

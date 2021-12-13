@@ -1,0 +1,33 @@
+﻿@model AdminDto
+@{
+    ViewData["Title"] = "Visualizar datos de admin";
+}
+
+<h1>Ver datos de administrador</h1>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/admins">Administradores ></a></li>
+        <li class="breadcrumb-item active">@Model.Nombres (@Model.Id)</li>
+    </ol>
+</nav>
+
+<div class="card">
+    <div class="card-header">
+        Informacion detallada del administrador
+    </div>
+    <div class="card-body">
+        <dl class="di-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.Id</dd>
+            <dt>DNI</dt>
+            <dd>@Model.Dni</dd>
+            <dt>Nombres</dt>
+            <dd>@Model.Nombres</dd>
+            <dt>Apellidos</dt>
+            <dd>@Model.Apellidos</dd>
+            <dt>Estado</dt>
+            <dd>El administrador @(Model.Activo ? "" : "no ")está activo</dd>
+        </dl>
+    </div>
+</div>

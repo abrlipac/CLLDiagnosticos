@@ -1,46 +1,140 @@
-﻿@model WebClientCore.Models.UsuarioCreate
-
+﻿@model WebClientCore.Models.SignupViewModel
 @{
     ViewData["Title"] = "Signup";
 }
 
 <h1 class="text-center">Signup</h1>
 <h4 class="text-center">Regístrese para acceder al sistema</h4>
-<hr class="col-md-4 mx-auto"/>
+<hr class="col-md-4 mx-auto" />
 
 <div class="row justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-9">
         <form asp-action="Signup">
+            @if (ViewData["error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @ViewData["error"].ToString()
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row gap-3">
+                <div class="card col p-0">
+                    <div class="card-header">Datos del paciente</div>
+                    <div class="card-body p-3">
+                        <div class="form-floating mb-3">
+                            <input asp-for="PacienteCreate.Nombres" class="form-control" placeholder="Abraham" />
+                            <label asp-for="PacienteCreate.Nombres" class="form-label">Nombres</label>
+                            <span asp-validation-for="PacienteCreate.Nombres" class="text-danger"></span>
+                        </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Empleado_Id" class="form-control" type="number" placeholder="1" />
-                <label asp-for="Empleado_Id" class="form-label">Id de empleado</label>
-                <span asp-validation-for="Empleado_Id" class="text-danger"></span>
-            </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="PacienteCreate.Apellidos" class="form-control" placeholder="Lipa Calabilla" />
+                            <label asp-for="PacienteCreate.Apellidos" class="form-label">Apellidos</label>
+                            <span asp-validation-for="PacienteCreate.Apellidos" class="text-danger"></span>
+                        </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="NombreCompleto" class="form-control" placeholder="John Doe" />
-                <label asp-for="NombreCompleto" class="form-label">Nombre completo</label>
-                <span asp-validation-for="NombreCompleto" class="text-danger"></span>
-            </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="PacienteCreate.Dni" class="form-control" placeholder="99999999" />
+                            <label asp-for="PacienteCreate.Dni" class="form-label">DNI</label>
+                            <span asp-validation-for="PacienteCreate.Dni" class="text-danger"></span>
+                        </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="UserName" class="form-control" placeholder="johndoe" />
-                <label asp-for="UserName" class="form-label">Usuario</label>
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="PacienteCreate.Email" class="form-control" placeholder="email@mail.com" type="email" />
+                            <label asp-for="PacienteCreate.Email" class="form-label">Email</label>
+                            <span asp-validation-for="PacienteCreate.Email" class="text-danger"></span>
+                        </div>
 
-            <div class="form-floating mb-3">
-                <input asp-for="Password" class="form-control" type="password" placeholder="***" />
-                <label asp-for="Password" class="form-label">Contraseña</label>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="PacienteCreate.Celular" class="form-control" placeholder="email@mail.com" />
+                            <label asp-for="PacienteCreate.Celular" class="form-label">Celular</label>
+                            <span asp-validation-for="PacienteCreate.Celular" class="text-danger"></span>
+                        </div>
 
-            <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Registrarse" />
+                        <fieldset class="mb-3">
+                            <legend class="fs-5">Sexo</legend>
+                            <div class="form-check">
+                                <input asp-for="PacienteCreate.Sexo" id="m" type="radio" class="form-check-input" value="0">
+                                <label for="m" class="form-check-label">Masculino</label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="PacienteCreate.Sexo" id="f" type="radio" class="form-check-input" value="1">
+                                <label for="f" class="form-check-label">Femenino</label>
+                            </div>
+                            <span asp-validation-for="PacienteCreate.Sexo" class="text-danger"></span>
+                        </fieldset>
 
-            <div class="text-center">
-                <a href="/account/login" class="btn btn-outline-secondary w-100">Log in</a>
+                        <div class="form-floating mb-3">
+                            <select asp-for="PacienteCreate.Region" class="form-select">
+                                <option value="">Seleccione una opción</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Ancash">Ancash</option>
+                                <option value="Apurímac">Apurímac</option>
+                                <option value="Arequipa">Arequipa</option>
+                                <option value="Ayacucho">Ayacucho</option>
+                                <option value="Cajamarca">Cajamarca</option>
+                                <option value="Callao">Callao</option>
+                                <option value="Cuzco">Cuzco </option>
+                                <option value="Huancavelica">Huancavelica</option>
+                                <option value="Huánuco">Huánuco</option>
+                                <option value="Ica">Ica</option>
+                                <option value="Junín">Junín</option>
+                                <option value="La_Libertad">La Libertad</option>
+                                <option value="Lambayeque">Lambayeque</option>
+                                <option value="Lima">Lima</option>
+                                <option value="Loreto">Loreto</option>
+                                <option value="Madre_de_Dios">Madre de Dios</option>
+                                <option value="Moquegua">Moquegua</option>
+                                <option value="Pasco">Pasco</option>
+                                <option value="Piura">Piura</option>
+                                <option value="Puno">Puno</option>
+                                <option value="San_Martín">San Martín</option>
+                                <option value="Tacna">Tacna</option>
+                                <option value="Tumbes">Tumbes</option>
+                                <option value="Ucayali">Ucayali</option>
+                            </select>
+                            <label asp-for="PacienteCreate.Region">Región</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="PacienteCreate.FechaNacimiento" asp-format="{0:dd/MM/yyyy}" class="form-control" />
+                            <label asp-for="PacienteCreate.FechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                            <span asp-validation-for="PacienteCreate.FechaNacimiento" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card col p-0">
+                    <div class="card-header">Datos del usuario</div>
+                    <div class="card-body p-3">
+                        <div class="form-floating mb-3">
+                            <input asp-for="UserName" class="form-control" placeholder="johndoe" />
+                            <label asp-for="UserName" class="form-label">Usuario</label>
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Password" class="form-control" type="password" placeholder="***" />
+                            <label asp-for="Password" class="form-label">Contraseña</label>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="RepetirPassword" class="form-control" type="password" placeholder="***" />
+                            <label asp-for="RepetirPassword" class="form-label">Repetir contraseña</label>
+                            <span asp-validation-for="RepetirPassword" class="text-danger"></span>
+                        </div>
+
+                        <input asp-for="PacienteCreate.Activo" value="true" type="hidden" />
+
+                        <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Registrarse" />
+
+                        <div class="text-center">
+                            <a href="/account/login" class="btn btn-outline-secondary w-100">Log in</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

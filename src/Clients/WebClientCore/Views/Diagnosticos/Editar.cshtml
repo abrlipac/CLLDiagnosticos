@@ -1,0 +1,34 @@
+﻿@model Api.Gateway.Models.Diagnosticos.DTOs.DiagnosticoDto
+@{
+    
+}
+<h1>Editar diagnostico @Model.Especialidad_Id</h1>
+
+@*<h2>@PreguntasRespuestas[0].Respuesta</h2>*@
+
+@*
+    <form class="container">
+        @foreach (var pr in PreguntasRespuestas)
+        {
+            <div class="form-group">
+                <label for="temperatura" class="form-label">@pr.Pregunta</label>
+                @if (pr.Opciones == null)
+                {
+                    <input type="text" class="form-control" id="temperatura" value="@pr.Respuesta" required="">
+                }
+                else
+                {
+                    <select class="form-select" id="sudoracion" required>
+                        @foreach (var opcion in pr.Opciones)
+                        {
+                            <option value=@opcion>@opcion</option>
+                        }
+                    </select>
+                }
+            </div>
+        }
+
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Editar</button>
+        </div>
+    </form>*@

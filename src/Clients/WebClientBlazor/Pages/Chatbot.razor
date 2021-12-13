@@ -1,8 +1,13 @@
 ﻿@page "/diagnosticos/chatbot"
 
+@using Refit
+@using WebClientBlazor.Resources
+@using WebClientBlazor.Service
+@using Api.Gateway.Models.Diagnosticos.DTOs
+@using Api.Gateway.Models.Diagnosticos.Commands
 @inject NavigationManager NavigationManager
 
-<div class="chatbot m-auto h-100 rounded overflow-hidden d-flex flex-column">
+<div class="chatbot m-auto h-100 rounded overflow-hidden d-flex flex-column mt-3">
     <div class="chatbot__header p-3 text-white">
         <h2 class="h3 text-white m-0">CLL - Chatbot</h2>
     </div>
@@ -26,27 +31,61 @@
         }
     </div>
     <div class="chatbot__footer d-flex flex-row p-2 align-items-center">
-        <input class="form-control" placeholder="Ingrese un dato" @bind=@DatoIngresado @oninput="(e => DatoIngresado = (string) e.Value)" @onkeydown=EnterSubmit>
+        <input class="form-control" placeholder="Ingrese un dato" @bind=@DatoIngresado @oninput="(e => DatoIngresado = (string)e.Value)" @onkeydown=EnterSubmit>
         <button class="chatbot__send btn btn-outline-secondary rounded-circle ms-2 d-flex align-items-center" @onclick=ClickSubmit>
-            <img src="img/send.png" class="w-100" />
+            <img src="../../img/send.png" class="w-100" />
         </button>
     </div>
 </div>
 
 @if (noHayMasPreguntas)
 {
-    <a href="/diagnosticos/resultados" class="btn btn-primary">Ver resultados</a>
+    <input type="button" class="btn btn-primary w-25 mx-auto" value="Ver resultados" @onclick=GuardarDiagnostico />
 }
 
 @code {
-
     private static int iter = -1;
+
+    private static int preguntasCount = 1;
 
     private bool noHayMasPreguntas;
 
-    public List<Models.Mensaje> Mensajes = new();
+    public List<Models.Mensaje> Mensajes { get; set; } = new();
 
     public string DatoIngresado { get; set; }
+
+    public static List<Models.PreguntaRespuesta> PreguntasRespuestas { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer());
+        var webClientApi = RestService.For<IWebClientService>(ApiUrls.BaseUrl, refitSettings);
+
+        var Especialidades = await webClientApi.GetEspecialidades(AuthUser.AccessToken);
+
+        var Preguntas = await webClientApi.GetPreguntasEsp(AuthUser.AccessToken, 4, 30);
+
+        var IdEspecialidad = 4;
+
+        PreguntasRespuestas = new();
+
+        PreguntasRespuestas.Add(new PreguntaRespuesta(
+            "Elija una especialidad",
+            Especialidades.Items.Select(x => new OpcionDto() { Valor = x.Nombre }).ToList(),
+            "")
+        );
+
+        PreguntasRespuestas.AddRange(Preguntas.Items.ToList().Select(x => new PreguntaRespuesta
+        {
+            IdEspecialidad = IdEspecialidad,
+            IdPregunta = x.Id,
+            Opciones = x.Opciones.ToList(),
+            Pregunta = x.Contenido,
+            Respuesta = null
+        }).ToList());
+
+        preguntasCount = PreguntasRespuestas.Count();
+    }
 
     public void ElegirOpcionHandler(Models.Mensaje mensaje)
     {
@@ -56,10 +95,11 @@
 
     public void AgregarSgtePregunta()
     {
-        if (++iter < PreguntasRespuestas.Count)
+        if (++iter < preguntasCount)
         {
             var pregunta = PreguntasRespuestas[iter];
-            Mensajes.Add(new Models.Mensaje() { Contenido = pregunta.Pregunta, EsPregunta = true, Opciones = pregunta.Opciones });
+            var opciones = pregunta.Opciones.Select(x => x.Valor).ToList();
+            Mensajes.Add(new Models.Mensaje() { Contenido = pregunta.Pregunta, EsPregunta = true, Opciones = opciones });
 
             StateHasChanged();
         }
@@ -69,19 +109,6 @@
             iter = -1;
         }
     }
-
-    public List<Models.PreguntaRespuesta> PreguntasRespuestas = new()
-    {
-            new("Elija una especialidad", new List<string> {
-            "Cardiología",
-            "Alergología",
-            "Pediatría" }, null),
-            new("¿Cuál es su temperatura?", null, null),
-            new("¿Tiene sudoración?", new List<string> {
-            "Sí",
-            "No" }, null),
-        };
-
 
     public void EnterSubmit(KeyboardEventArgs args)
     {
@@ -101,5 +128,29 @@
         DatoIngresado = null;
 
         AgregarSgtePregunta();
+    }
+
+    public async Task GuardarDiagnostico()
+    {
+        var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer());
+        var webClientApi = RestService.For<IWebClientService>(ApiUrls.BaseUrl, refitSettings);
+
+        var paciente = await webClientApi.GetPacientes(AuthUser.AccessToken, AuthUser.UserId);
+        //var pacienteId = paciente.Items.FirstOrDefault().Id;
+        var pacienteId = 11;
+
+        var diagnosticoCreate = new DiagnosticoCreateCommand
+        {
+            Especialidad_Id = 4,
+            Paciente_Id = pacienteId,
+            DetallesDiagnostico = PreguntasRespuestas.Select(x => new DetalleDiagnosticoCommand {
+                Pregunta_Id = x.IdPregunta,
+                Respuesta = x.Respuesta
+            }).ToList()
+        };
+
+        await webClientApi.CreateDiagnostico(diagnosticoCreate, AuthUser.AccessToken);
+
+        NavigationManager.NavigateTo("http://localhost:10010/diagnosticos/resultados");
     }
 }

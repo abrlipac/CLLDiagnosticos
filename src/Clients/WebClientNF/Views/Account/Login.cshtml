@@ -1,0 +1,47 @@
+﻿@model WebClientNF.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1 class="text-center">Login</h1>
+<h4 class="text-center">Ingrese sus datos para ingresar al sistema</h4>
+<hr class="col-md-4 mx-auto"/>
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, null))
+        {
+            if (Model.HasInvalidAccess)
+            {
+                <div class="alert alert-danger">Acceso denegado</div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(m => m.UsuarioLogin.username, new { @class = "form-control", placeholder = "name@example.com" })
+                @Html.LabelFor(m => m.UsuarioLogin.username, new { @class = "form-label" })
+            </div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(m => m.UsuarioLogin.password, new { @class = "form-control", placeholder = "***", type="password" })
+                @Html.LabelFor(m => m.UsuarioLogin.password, new { @class = "form-label" })
+            </div>
+
+            <div class="mb-3 form-check">
+                <label class="form-check-label" for="remember-me">Recuérdame</label>
+                <input type="checkbox" class="form-check-input" id="remember-me">
+            </div>
+
+            <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Log in" />
+
+            <div class="text-center">
+                <a href="/account/signup" class="btn btn-outline-secondary w-100">Registrarse</a>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{Html.RenderPartial("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,46 @@
+﻿@model Api.Gateway.Models.Diagnosticos.DTOs.DiagnosticoDto
+<h1 class="text-center mb-4">Resultados</h1>
+
+<div class="card">
+    <div class="card-header">
+        Informacion detallada del administrador
+    </div>
+    <div class="card-body">
+        <dl class="di-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.Id</dd>
+            <dt>Paciente</dt>
+            <dd>@User.Identity.Name</dd>
+            <dt>Fecha</dt>
+            <dd>@Model.Fecha</dd>
+        </dl>
+    </div>
+</div>
+
+<table class="table w-50 mx-auto ">
+    <thead>
+        <tr>
+            <th>@*@Model.PosiblesEnfermedades.FirstOrDefault().Porcentaje% @Model.PosiblesEnfermedades.FirstOrDefault().Enfermedad.Nombre*@</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3% Enfermedad 2</td>
+        </tr>
+        <tr>
+            <td>1% Enfermedad 3</td>
+        </tr>
+        <tr>
+            <td>1% Enfermedad 4</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="text-center">
+    <a href="https://clinicalaluz.pe/sedes/tacna/" class="btn btn-primary">Reservar una cita</a>
+    <br class="my-4">
+    <a href="/" class="btn btn-outline-primary">Regresar al menú</a>
+</div>

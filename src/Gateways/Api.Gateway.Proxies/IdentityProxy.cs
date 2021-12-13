@@ -13,6 +13,7 @@ namespace Api.Gateway.Proxies
     public interface IIdentityProxy
     {
         Task CreateAsync(UsuarioCreateCommand command);
+        Task CreateAdminAsync(UsuarioAdminCreateCommand command);
         Task<IdentityAccess> AuthenticationAsync(UsuarioLoginCommand command);
     }
     public class IdentityProxy : IIdentityProxy
@@ -39,7 +40,7 @@ namespace Api.Gateway.Proxies
                 "application/json"
             );
 
-            var request = await _httpClient.PostAsync($"{_apiUrls.IdentityUrl}identity/authentication", content);
+            var request = await _httpClient.PostAsync($"{_apiUrls.IdentityUrl}identity/auth", content);
             request.EnsureSuccessStatusCode();
 
             return JsonSerializer.Deserialize<IdentityAccess>(
@@ -49,6 +50,18 @@ namespace Api.Gateway.Proxies
                     PropertyNameCaseInsensitive = true
                 }
             );
+        }
+
+        public async Task CreateAdminAsync(UsuarioAdminCreateCommand command)
+        {
+            var content = new StringContent(
+                JsonSerializer.Serialize(command),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            var request = await _httpClient.PostAsync($"{_apiUrls.IdentityUrl}identity/admin", content);
+            request.EnsureSuccessStatusCode();
         }
 
         public async Task CreateAsync(UsuarioCreateCommand command)

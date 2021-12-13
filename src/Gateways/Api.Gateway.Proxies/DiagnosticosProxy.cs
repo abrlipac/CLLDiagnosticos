@@ -14,8 +14,11 @@ namespace Api.Gateway.Proxies
     public interface IDiagnosticosProxy
     {
         Task<DataCollection<DiagnosticoDto>> GetAllAsync(int page, int take);
+        Task<DataCollection<EspecialidadDto>> GetAllEspecialidadesAsync(int page, int take);
+        Task<DataCollection<PreguntaDto>> GetAllPreguntasAsync(int espId, int page, int take);
         Task<DiagnosticoDto> GetAsync(int id);
         Task CreateAsync(DiagnosticoCreateCommand command);
+        Task UpdateAsync(DiagnosticoUpdateCommand command);
     }
     public class DiagnosticosProxy : IDiagnosticosProxy
     {
@@ -45,6 +48,18 @@ namespace Api.Gateway.Proxies
             request.EnsureSuccessStatusCode();
         }
 
+        public async Task UpdateAsync(DiagnosticoUpdateCommand command)
+        {
+            var content = new StringContent(
+                JsonSerializer.Serialize(command),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            var request = await _httpClient.PutAsync($"{_apiUrls.DiagnosticosUrl}diagnosticos", content);
+            request.EnsureSuccessStatusCode();
+        }
+
         public async Task<DataCollection<DiagnosticoDto>> GetAllAsync(int page, int take)
         {
             var request = await _httpClient.GetAsync($"{_apiUrls.DiagnosticosUrl}diagnosticos?page={page}&take={take}");
@@ -65,6 +80,34 @@ namespace Api.Gateway.Proxies
             request.EnsureSuccessStatusCode();
 
             return JsonSerializer.Deserialize<DiagnosticoDto>(
+                await request.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            );
+        }
+
+        public async Task<DataCollection<EspecialidadDto>> GetAllEspecialidadesAsync(int page, int take)
+        {
+            var request = await _httpClient.GetAsync($"{_apiUrls.DiagnosticosUrl}diagnosticos/especialidades?page={page}&take={take}");
+            request.EnsureSuccessStatusCode();
+
+            return JsonSerializer.Deserialize<DataCollection<EspecialidadDto>>(
+                await request.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            );
+        }
+
+        public async Task<DataCollection<PreguntaDto>> GetAllPreguntasAsync(int espId, int page, int take)
+        {
+            var request = await _httpClient.GetAsync($"{_apiUrls.DiagnosticosUrl}diagnosticos/preguntas?espId={espId}&page={page}&take={take}");
+            request.EnsureSuccessStatusCode();
+
+            return JsonSerializer.Deserialize<DataCollection<PreguntaDto>>(
                 await request.Content.ReadAsStringAsync(),
                 new JsonSerializerOptions
                 {

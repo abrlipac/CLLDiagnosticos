@@ -28,12 +28,13 @@ namespace Api.Gateway.WebClient
             return await _usuarioProxy.GetAllAsync(page, take);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [AllowAnonymous]
+        [HttpGet("{username}")]
+        public async Task<IActionResult> Get(string username)
         {
-            var paciente = await _usuarioProxy.GetAsync(id);
+            var paciente = await _usuarioProxy.GetAsync(username);
             if (paciente is null)
-                return NotFound($"No se ha encontrado a un usuario con Id {id}");
+                return NotFound($"No se ha encontrado a un usuario con el UserName {username}");
             return Ok(paciente);
         }
     }

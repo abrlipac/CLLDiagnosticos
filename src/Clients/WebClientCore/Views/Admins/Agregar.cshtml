@@ -1,0 +1,76 @@
+﻿@model WebClientCore.Models.CreateAdminViewModel
+@{
+    ViewData["Title"] = "Crear administrador";
+}
+
+<h1 class="text-center">Crear administrador</h1>
+<h4 class="text-center">Regístrar un nuevo administrador</h4>
+<hr class="col-md-4 mx-auto" />
+
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <form asp-action="Guardar">
+            @if (ViewData["error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @ViewData["error"].ToString()
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row gap-3">
+                <div class="card col p-0">
+                    <div class="card-header">Datos del administrador</div>
+                    <div class="card-body p-3">
+                        <div class="form-floating mb-3">
+                            <input asp-for="AdminCreate.Nombres" class="form-control" placeholder="Abraham" />
+                            <label asp-for="AdminCreate.Nombres" class="form-label">Nombres</label>
+                            <span asp-validation-for="AdminCreate.Nombres" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="AdminCreate.Apellidos" class="form-control" placeholder="Lipa Calabilla" />
+                            <label asp-for="AdminCreate.Apellidos" class="form-label">Apellidos</label>
+                            <span asp-validation-for="AdminCreate.Apellidos" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="AdminCreate.Dni" class="form-control" placeholder="99999999" />
+                            <label asp-for="AdminCreate.Dni" class="form-label">DNI</label>
+                            <span asp-validation-for="AdminCreate.Dni" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card col p-0">
+                    <div class="card-header">Datos del usuario</div>
+                    <div class="card-body p-3">
+                        <div class="form-floating mb-3">
+                            <input asp-for="UserName" class="form-control" placeholder="johndoe" />
+                            <label asp-for="UserName" class="form-label">Usuario</label>
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Password" class="form-control" type="password" placeholder="***" />
+                            <label asp-for="Password" class="form-label">Contraseña</label>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="RepetirPassword" class="form-control" type="password" placeholder="***" />
+                            <label asp-for="RepetirPassword" class="form-label">Repetir contraseña</label>
+                            <span asp-validation-for="RepetirPassword" class="text-danger"></span>
+                        </div>
+
+                        <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Registrar administrador" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

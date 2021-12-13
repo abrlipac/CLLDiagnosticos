@@ -27,7 +27,7 @@ namespace Api.Gateway.WebClient
         }
 
         [HttpGet]
-        public async Task<DataCollection<PacienteDto>> GetAll(int page = 1, int take = 10, string ids = null)
+        public async Task<DataCollection<PacienteDto>> GetAll(string dni, string usuarioId, int page = 1, int take = 10, string ids = null)
         {
             IEnumerable<int> pacientesIds = null;
 
@@ -36,7 +36,7 @@ namespace Api.Gateway.WebClient
                 pacientesIds = ids.Split(',').Select(x => Convert.ToInt32(x));
             }
 
-            return await _clientesProxy.GetAllAsync(page, take, pacientesIds);
+            return await _clientesProxy.GetAllAsync(dni, usuarioId, page, take, pacientesIds);
         }
 
         [HttpGet("{id}")]
@@ -48,6 +48,7 @@ namespace Api.Gateway.WebClient
             return Ok(paciente);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create(PacienteCreateCommand notification)
         {

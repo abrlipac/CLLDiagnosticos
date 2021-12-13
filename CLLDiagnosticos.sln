@@ -129,7 +129,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClientBlazor", "src\Clie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClientCore", "src\Clients\WebClientCore\WebClientCore.csproj", "{E5AFCEA1-16CC-43DD-BE72-E3AADFBC5083}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Gateway.WebClient.Proxy", "src\Gateways\Api.Gateway.WebClient.Proxy\Api.Gateway.WebClient.Proxy.csproj", "{DE0B335D-B687-44A7-8D39-13AF70A1A9CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Gateway.WebClient.Proxy", "src\Gateways\Api.Gateway.WebClient.Proxy\Api.Gateway.WebClient.Proxy.csproj", "{DE0B335D-B687-44A7-8D39-13AF70A1A9CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
