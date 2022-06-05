@@ -1,0 +1,81 @@
+﻿@page "/login"
+
+@using Api.Gateway.Models.Identity.Commands
+@using Api.Gateway.Models.Identity.Responses
+
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Components.Authorization
+
+@using Microsoft.AspNetCore.Http
+@using Refit
+@using System.Text.Json
+@using System.Security.Claims
+
+@using WebClientBlazor.Resources
+@using WebClientBlazor.Service
+
+@inject NavigationManager NavigationManager
+
+<h1 class="text-center">Login</h1>
+<h4 class="text-center">Ingrese sus datos para ingresar al sistema</h4>
+<hr class="col-md-4 mx-auto" />
+
+@code {
+    private UsuarioLoginCommand usuarioLogin = new();
+    private bool HasInvalidAccess = false;
+
+    private readonly string IdentityUrl = ApiUrls.IdentityUrl;
+
+    private async void IniciarSesion()
+    {
+        var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer());
+        var webClientApi = RestService.For<IWebClientService>(IdentityUrl, refitSettings);
+
+        ApiResponse<IdentityAccess> response = await webClientApi.Login(usuarioLogin);
+
+        if (response.IsSuccessStatusCode && response.Content.Succeeded)
+        {
+            NavigationManager.NavigateTo($"/api/account/connect?access_token={response.Content.AccessToken}", true);
+        }
+        else
+        {
+            HasInvalidAccess = true;
+        }
+    }
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <EditForm Model=usuarioLogin OnValidSubmit=IniciarSesion>
+            @if (HasInvalidAccess)
+            {
+                <div class="alert alert-danger">Acceso denegado</div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-floating mb-3">
+                <input @bind-value=@usuarioLogin.UserName class="form-control" placeholder="name@example.com" />
+                <label asp-for=@usuarioLogin.UserName class="form-label">Usuario</label>
+                <span asp-validation-for=@usuarioLogin.UserName class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input @bind-value=@usuarioLogin.Password class="form-control" type="password" placeholder="***" />
+                <label asp-for=@usuarioLogin.Password class="form-label">Contraseña</label>
+                <span asp-validation-for=@usuarioLogin.Password class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 form-check">
+                <label class="form-check-label" for="remember-me">Recuérdame</label>
+                <input type="checkbox" class="form-check-input" id="remember-me">
+            </div>
+
+            <input class="btn text-white w-100 mb-2 submit-btn" type="submit" name="submit" value="Log in" />
+
+            <div class="text-center">
+                <a href="/signup" class="btn btn-outline-secondary w-100">Registrarse</a>
+            </div>
+        </EditForm>
+    </div>
+</div>

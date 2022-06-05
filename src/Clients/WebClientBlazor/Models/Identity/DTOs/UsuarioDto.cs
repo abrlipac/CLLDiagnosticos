@@ -1,4 +1,4 @@
-﻿namespace Models.Identity.DTOs
+﻿namespace WebClientBlazor.Models.Identity.DTOs
 {
     public class UsuarioDto
     {

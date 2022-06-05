@@ -22,12 +22,12 @@ namespace Diagnosticos.Bdd.Tests.StepDefinitions
             Scenario = scenario;
         }
 
-        private ILogger<DiagnosticoCreateEventHandler> GetLogger()
-            => new Mock<ILogger<DiagnosticoCreateEventHandler>>().Object;
+        private ILogger<DiagnosticoEventHandler> GetLogger()
+            => new Mock<ILogger<DiagnosticoEventHandler>>().Object;
 
         readonly ApplicationDbContext Context = ApplicationDbContextInMemory.Get();
         DiagnosticoCreateCommand Diagnostico;
-        DiagnosticoCreateEventHandler EventHandler;
+        DiagnosticoEventHandler EventHandler;
 
         [Given(@"un diagnostico con detalles de diagnostico válidos")]
         public void GivenUnDiagnosticoConDetallesDeDiagnosticoValidos()
@@ -48,6 +48,7 @@ namespace Diagnosticos.Bdd.Tests.StepDefinitions
         {
             Diagnostico = new DiagnosticoCreateCommand()
             {
+                Especialidad_Id,
                 Empleado_Id = 1,
                 Paciente_Id = 1,
                 DetallesDiagnostico = new List<DetalleDiagnosticoCreate>()

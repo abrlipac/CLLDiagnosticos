@@ -42,14 +42,7 @@ namespace Diagnosticos.Service.EventHandlers
 
             using (var transaction = await Context.Database.BeginTransactionAsync())
             {
-                Logger.LogInformation("! Preparando los detalles");
-                PrepareDetails(entry, notification);
-
-                Logger.LogInformation("! Preparando los resultados");
-                PrepareEnfermedades(entry, notification);
-
-                Logger.LogInformation("! Preparando la cabecera");
-                PrepareHeader(entry, notification);
+                PrepararDiagnostico(notification, entry);
 
                 Logger.LogInformation("! Guardando el diagnóstico");
                 await Context.AddAsync(entry);
@@ -74,14 +67,7 @@ namespace Diagnosticos.Service.EventHandlers
 
             using (var transaction = await Context.Database.BeginTransactionAsync())
             {
-                Logger.LogInformation("! Preparando los detalles");
-                PrepareDetails(entry, notification);
-
-                Logger.LogInformation("! Preparando los resultados");
-                PrepareEnfermedades(entry, notification);
-
-                Logger.LogInformation("! Preparando la cabecera");
-                PrepareHeader(entry, notification);
+                PrepararDiagnostico(notification, entry);
 
                 Logger.LogInformation("! Guardando el diagnóstico");
 
@@ -96,7 +82,19 @@ namespace Diagnosticos.Service.EventHandlers
             Logger.LogInformation("! Terminó la actualización de un diagnóstico");
         }
 
-        public void PrepareDetails(Diagnostico entry, IDiagnosticoCommand notification)
+        private void PrepararDiagnostico(IDiagnosticoCommand notification, Diagnostico entry)
+        {
+            Logger.LogInformation("! Preparando los detalles");
+            PrepararDetalles(entry, notification);
+
+            Logger.LogInformation("! Preparando los resultados");
+            PrepararEnfermedades(entry, notification);
+
+            Logger.LogInformation("! Preparando la cabecera");
+            PrepararHeader(entry, notification);
+        }
+
+        public void PrepararDetalles(Diagnostico entry, IDiagnosticoCommand notification)
         {
             entry.DetallesDiagnostico = notification.DetallesDiagnostico.Select(x => new DetalleDiagnostico
             {
@@ -106,7 +104,7 @@ namespace Diagnosticos.Service.EventHandlers
             }).ToList();
         }
 
-        public void PrepareEnfermedades(Diagnostico entry, IDiagnosticoCommand notification)
+        public void PrepararEnfermedades(Diagnostico entry, IDiagnosticoCommand notification)
         {
             var enfermedadesDiagnostico = DeterminarEnfermedades(notification);
             entry.PosiblesEnfermedades = enfermedadesDiagnostico.Select(x => new PosibleEnfermedad
@@ -117,7 +115,7 @@ namespace Diagnosticos.Service.EventHandlers
             }).ToList();
         }
 
-        public void PrepareHeader(Diagnostico entry, IDiagnosticoCommand notification)
+        public void PrepararHeader(Diagnostico entry, IDiagnosticoCommand notification)
         {
             // Header information
             if (notification is DiagnosticoCreateCommand)
@@ -193,6 +191,7 @@ namespace Diagnosticos.Service.EventHandlers
             return maxPorcentajes;
         }
 
+        // Clase de apoyo para guardar los resultados individuales temporalmente
         public class EnfermedadDiagnostico
         {
             public int Enfermedad_Id;

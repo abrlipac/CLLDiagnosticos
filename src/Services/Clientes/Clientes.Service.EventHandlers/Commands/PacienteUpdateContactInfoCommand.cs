@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Clientes.Service.EventHandlers.Responses;
+using MediatR;
 
 namespace Clientes.Service.EventHandlers.Commands
 {
-    public class PacienteUpdateContactInfoCommand : INotification
+    public class PacienteUpdateContactInfoCommand : IRequest<Result>
     {
         public int Id { get; set; }
         public string Email { get; set; }

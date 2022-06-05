@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Identity.Persistence.Database
 {
-    public class ApplicationDbContext : IdentityDbContext<Usuario, Rol, string>
+    public class ApplicationDbContext : IdentityDbContext<Usuario, Rol, int>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }

@@ -21,9 +21,9 @@
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="./">
                 <img src="../../img/logo1.png" height="60" />
-                CLL Diagnósticos
+                <b>CLL</b> Diagnósticos
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,8 +35,8 @@
                             Diagnosticos
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="https://localhost:44343/diagnosticos/chatbot">Generar diagnostico</a></li>
-                            <li><a class="dropdown-item" href="~/diagnosticos">Listar</a></li>
+                            <li><a class="dropdown-item" href="/diagnosticos/chatbot">Generar diagnostico</a></li>
+                            <li><a class="dropdown-item" href="/diagnosticos">Listar</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -46,24 +46,22 @@
                             Reportes
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="http://localhost:10010/reportes/reporte">Reporte</a></li>
+                            <li><a class="dropdown-item" href="/reportes">Reporte</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-0 mb-0 mb-lg-0">
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../../img/user.png" width="40" />
-                            <b>Bienvenido </b>@(UserName)<span class="caret"></span>
-
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="~/account/perfil">Perfil de usuario</a></li>
-                            <li><a class="dropdown-item" href="~/account/logout">Cerrar sesión</a></li>
-                        </ul>
-                    </li>
+                    <AuthorizeView>
+                        <Authorized>
+                            <img src="img/perfil.jpg" class="rounded-circle my-auto profile-img"/>
+                            <a href="account/profile" class="nav-link">@context.User.Identity.Name</a>
+                            <a href="api/account/logout" class="btn btn-outline-danger ms-1">Cerrar sesión</a>
+                        </Authorized>
+                        <NotAuthorized>
+                            <a href="login" class="btn submit-btn text-white">Log in</a>
+                            <a href="signup" class="btn btn-outline-secondary ms-1">Registrarse</a>
+                        </NotAuthorized>
+                    </AuthorizeView>
                 </ul>
             </div>
         </div>

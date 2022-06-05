@@ -120,4 +120,19 @@
   <data name="BaseUrl" xml:space="preserve">
     <value>http://localhost:10000</value>
   </data>
+  <data name="BlazorClientUrl" xml:space="preserve">
+    <value>http://localhost:10011</value>
+  </data>
+  <data name="ClientesUrl" xml:space="preserve">
+    <value>http://localhost:10001</value>
+  </data>
+  <data name="DiagnosticosUrl" xml:space="preserve">
+    <value>http://localhost:10002</value>
+  </data>
+  <data name="IdentityUrl" xml:space="preserve">
+    <value>http://localhost:10003</value>
+  </data>
+  <data name="PersonalUrl" xml:space="preserve">
+    <value>http://localhost:10004</value>
+  </data>
 </root>

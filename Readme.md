@@ -6,7 +6,6 @@
 
 * LIPA CALABILLA, Abraham
 * LLANQUE ARISACA, Miguel
-* TICONA, Alex
 
 ### Configurar la cadena de conexión
 

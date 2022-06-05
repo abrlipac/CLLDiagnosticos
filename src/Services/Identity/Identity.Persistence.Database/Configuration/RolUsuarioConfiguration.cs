@@ -15,7 +15,7 @@ namespace Identity.Persistence.Database.Configuration
             {
                 rolesUsuario.Add(new RolUsuario
                 {
-                    UserId = i.ToString(),
+                    UserId = i,
                     RoleId = i <= 10 ? RolConfiguration.Admin_Id : RolConfiguration.Paciente_Id
                 });
             }

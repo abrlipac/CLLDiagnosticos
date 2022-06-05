@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Identity.Api.Controllers
@@ -27,14 +28,12 @@ namespace Identity.Api.Controllers
                 var result = await Mediator.Send(command);
 
                 if (!result.Succeeded)
-                {
                     return BadRequest(result.Errors);
-                }
 
-                return Ok();
+                return Ok($"Se ha registrado al admin '{command.NombreCompleto}'");
             }
 
-            return BadRequest();
+            return BadRequest(ModelState.Values.SelectMany(v => v.Errors));
         }
 
         [AllowAnonymous]
@@ -45,15 +44,13 @@ namespace Identity.Api.Controllers
             {
                 var result = await Mediator.Send(command);
 
-                if (!result.Succeeded) 
-                {
-                    return BadRequest(result.Errors);
-                }
+                if (!result.Succeeded)
+                    return BadRequest(result);
 
-                return Ok();
+                return Ok($"Se ha registrado al paciente '{command.NombreCompleto}'");
             }
 
-            return BadRequest();
+            return BadRequest(ModelState.Values.SelectMany(v => v.Errors));
         }
 
         [AllowAnonymous]
@@ -65,14 +62,12 @@ namespace Identity.Api.Controllers
                 var result = await Mediator.Send(command);
 
                 if (!result.Succeeded)
-                {
                     return BadRequest("Acceso denegado");
-                }
 
                 return Ok(result);
             }
 
-            return BadRequest();
+            return BadRequest(ModelState.Values.SelectMany(v => v.Errors));
         }
     }
 }

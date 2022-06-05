@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Models.Common
+namespace WebClientBlazor.Models.Common
 {
     public class DataCollection<T>
     {

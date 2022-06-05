@@ -1,4 +1,6 @@
-﻿namespace Api.Gateway.Models.Diagnosticos.Commands
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Api.Gateway.Models.Diagnosticos.Commands
 {
     public class DetalleDiagnosticoCommand
     {

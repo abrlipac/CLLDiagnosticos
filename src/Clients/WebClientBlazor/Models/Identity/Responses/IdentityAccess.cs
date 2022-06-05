@@ -1,4 +1,4 @@
-﻿namespace Models.Identity.Responses
+﻿namespace WebClientBlazor.Models.Identity.Responses
 {
     public class IdentityAccess
     {

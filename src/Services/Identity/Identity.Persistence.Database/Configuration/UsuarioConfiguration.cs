@@ -20,7 +20,7 @@ namespace Identity.Persistence.Database.Configuration
             {
                 var usuario = new Usuario
                 {
-                    Id = i.ToString(),
+                    Id = i,
                     NombreCompleto = i <= 10 ? $"Nombres {i} Apellidos {i}"
                         : $"Nombres {i - 10} Apellidos {i - 10}",
                     UserName = i <= 10 ? $"admin{i}" : $"paciente{i - 10}",

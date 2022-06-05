@@ -45,39 +45,34 @@ namespace Identity.Service.EventHandlers
             result.Succeeded = response.Succeeded;
 
             if (response.Succeeded)
-            {
                 await GenerateToken(user, result);
-            }
             else
-            {
                 result.AccessToken = "";
-            }
 
             return result;
         }
 
         private async Task GenerateToken(Usuario user, IdentityAccess identity)
         {
-            var secretKey = Configuration.GetSection("SecretKey").Value;
-            var key = Encoding.ASCII.GetBytes(secretKey);
+            var secretKey = Configuration.GetSection("SecretKey").Value; // obtiene la clave secreta de la aplicación
+            var key = Encoding.ASCII.GetBytes(secretKey); // decodifica la clave secreta
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.NombreCompleto)
-            };
+            }; // instancia los claims
 
             var roles = await Context.Roles
                 .Where(x => x.RolesUsuario.Any(y => y.UserId == user.Id))
-                .ToListAsync();
+                .ToListAsync(); // obtiene los roles del usuario
 
+            // agrega los roles a los claims
             foreach (var role in roles)
-            {
                 claims.Add(
                     new Claim(ClaimTypes.Role, role.Name)
                 );
-            }
-
+            
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
@@ -86,12 +81,12 @@ namespace Identity.Service.EventHandlers
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature
                 )
-            };
+            }; // instanciación del token (expira en 1 hora)
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var createdToken = tokenHandler.CreateToken(tokenDescriptor);
+            var createdToken = tokenHandler.CreateToken(tokenDescriptor); // creación del token
 
-            identity.AccessToken = tokenHandler.WriteToken(createdToken);
+            identity.AccessToken = tokenHandler.WriteToken(createdToken); // guarda el token
         }
     }
 }

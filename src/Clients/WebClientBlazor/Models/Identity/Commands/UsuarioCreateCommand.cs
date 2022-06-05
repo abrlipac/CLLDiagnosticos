@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Models.Identity.Commands
+namespace WebClientBlazor.Models.Identity.Commands
 {
     public class UsuarioCreateCommand
     {

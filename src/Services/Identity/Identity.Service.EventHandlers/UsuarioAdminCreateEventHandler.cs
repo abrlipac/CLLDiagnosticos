@@ -1,6 +1,8 @@
 ﻿using Identity.Domain;
 using Identity.Persistence.Database;
 using Identity.Service.EventHandlers.Commands;
+using Identity.Service.EventHandlers.Responses;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Identity.Service.EventHandlers
 {
-    public class UsuarioAdminCreateEventHandler : IRequestHandler<UsuarioAdminCreateCommand, IdentityResult>
+    public class UsuarioAdminCreateEventHandler : IRequestHandler<UsuarioAdminCreateCommand, Result>
     {
         private readonly UserManager<Usuario> UserManager;
         private readonly ApplicationDbContext _context;
@@ -22,29 +24,35 @@ namespace Identity.Service.EventHandlers
             _context = applicationDbContext;
         }
 
-        public async Task<IdentityResult> Handle(UsuarioAdminCreateCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(UsuarioAdminCreateCommand request, CancellationToken cancellationToken)
         {
-            var entry = new Usuario
-            {
-                NombreCompleto = request.NombreCompleto,
-                UserName = request.UserName,
-            };
+            var entry = request.Adapt<Usuario>();
 
-            var identityResult = await UserManager.CreateAsync(entry, request.Password);
+            var identityResult = await UserManager.CreateAsync(entry, request.Password); // creación del usuario y contraseña
 
-            var role = _context.Roles.Find("2301D884-221A-4E7D-B509-0113DCC043E1");
-            var user = _context.Users.ToList().Where(x => x.UserName.Equals(entry.UserName)).SingleOrDefault();
+            if (!identityResult.Succeeded) // si no se pudo registrar al usuario
+                return GetResult(identityResult);
+
+            var role = _context.Roles.Find(1); // id de rol admin
+            var user = _context.Users.ToList().Where(x => x.UserName.Equals(entry.UserName)).SingleOrDefault(); // busca al usuario creado
 
             RolUsuario rolUsuario = new RolUsuario
             {
                 Rol = role,
                 Usuario = user
-            };
+            }; // asignación del rol admin
 
             await _context.AddAsync(rolUsuario);
             await _context.SaveChangesAsync();
 
-            return identityResult;
+            return GetResult(identityResult);
         }
+
+        private Result GetResult(IdentityResult identityResult)
+        => new Result()
+        {
+            Succeeded = identityResult.Succeeded,
+            Errors = identityResult.Errors.Select(x => x.Description).ToList(),
+        };
     }
 }

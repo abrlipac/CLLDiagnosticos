@@ -19,7 +19,7 @@ namespace WebClientBlazor.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ApiUrls {
@@ -66,6 +66,51 @@ namespace WebClientBlazor.Resources {
         public static string BaseUrl {
             get {
                 return ResourceManager.GetString("BaseUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:10011.
+        /// </summary>
+        public static string BlazorClientUrl {
+            get {
+                return ResourceManager.GetString("BlazorClientUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:10001.
+        /// </summary>
+        public static string ClientesUrl {
+            get {
+                return ResourceManager.GetString("ClientesUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:10002.
+        /// </summary>
+        public static string DiagnosticosUrl {
+            get {
+                return ResourceManager.GetString("DiagnosticosUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:10003.
+        /// </summary>
+        public static string IdentityUrl {
+            get {
+                return ResourceManager.GetString("IdentityUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:10004.
+        /// </summary>
+        public static string PersonalUrl {
+            get {
+                return ResourceManager.GetString("PersonalUrl", resourceCulture);
             }
         }
     }

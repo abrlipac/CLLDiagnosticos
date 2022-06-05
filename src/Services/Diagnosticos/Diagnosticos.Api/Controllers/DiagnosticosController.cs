@@ -35,6 +35,12 @@ namespace Diagnosticos.Api.Controllers
             return await _diagnosticoQueryService.GetAllAsync(paciente, page, take);
         }
 
+        [HttpGet("enfermedades")]
+        public async Task<DataCollection<EnfermedadDiagnosticoDto>> GetAllEnfermedades(int? paciente, int page = 1, int take = 10)
+        {
+            return await _diagnosticoQueryService.GetAllEnfermedadesAsync(paciente, page, take);
+        }
+
         [HttpGet("especialidades")]
         public async Task<DataCollection<EspecialidadDto>> GetAllEspecialidades(int page = 1, int take = 10)
         {
@@ -53,6 +59,23 @@ namespace Diagnosticos.Api.Controllers
             try
             {
                 return await _diagnosticoQueryService.GetAsync(id);
+            }
+            catch (DiagnosticosGetDiagnosticoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("resultados/{id}")]
+        public async Task<ActionResult<ResultadoDiagnosticoDto>> GetResultado(int id)
+        {
+            try
+            {
+                return await _diagnosticoQueryService.GetResultadoAsync(id);
             }
             catch (DiagnosticosGetDiagnosticoException ex)
             {
